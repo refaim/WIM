@@ -1,4 +1,4 @@
-WIM_VERSION = "1.3.1";
+WIM_VERSION = "1.3.2";
 
 WIM_Windows = {};
 WIM_EditBoxInFocus = nil;
@@ -228,7 +228,7 @@ function WIM_Incoming(event)
 				WIM_IconFrame:Hide();
 			else
 				WIM_IconFrame:Show();
-				WIM_IconFrame:SetFrameStrata("HIGH");
+				WIM_IconFrame:SetFrameStrata("LOW");
 				WIM_IconFrame:SetPoint("TOPLEFT", "UIParent", "BOTTOMLEFT",WIM_Data.miniFreeMoving.left,WIM_Data.miniFreeMoving.top);
 			end
 		else
@@ -690,12 +690,6 @@ end
 
 
 function WIM_Icon_ToggleDropDown()
-	--ToggleDropDownMenu(1, nil, WIM_Icon_DropDown);
-	--local tMenu = getglobal("DropDownList"..UIDROPDOWNMENU_MENU_LEVEL);	
-	--tMenu:ClearAllPoints();
-	--tMenu:SetPoint("TOPRIGHT", "WIM_IconFrameButton", "BOTTOMLEFT", 0, 0);
-	--WIM_Icon_DropDown:SetWidth(DropDownList1Button1:GetWidth()+50);
-	--DropDownList1:SetScale(UIParent:GetScale());
 	if(WIM_ConversationMenu:IsVisible()) then
 		WIM_ConversationMenu:Hide();
 	else
@@ -737,12 +731,12 @@ function WIM_Icon_DropDown_Update()
 	if tCount == 0 then
 		info = {}
 		info.justifyH = "LEFT"
-		info.text = " - None -"
+		info.text = "WIM_L_NONE"
 		info.notClickable = 1
 		info.notCheckable = 1
 		getglobal("WIM_ConversationMenuTellButton1Close"):Hide()
 		getglobal("WIM_ConversationMenuTellButton1"):Disable()
-		getglobal("WIM_ConversationMenuTellButton1"):SetText("|cffffffff - None -")
+		getglobal("WIM_ConversationMenuTellButton1"):SetText(WIM_L_NONEC)
 		getglobal("WIM_ConversationMenuTellButton1"):Show()
 	else
 		if WIM_Data.sortAlpha then
@@ -988,27 +982,27 @@ function WIM_LoadShortcutFrame()
 		{
 			icon = "Interface\\Icons\\Ability_Hunter_AimedShot",
 			cmd		= "target",
-			tooltip = "Target"
+			tooltip = WIM_L_TARGET
 		},
 		{
 			icon = "Interface\\Icons\\Spell_Holy_BlessingOfStrength",
 			cmd		= "invite",
-			tooltip = "Invite"
+			tooltip = WIM_L_INVITE
 		},
 		{
 			icon = "Interface\\Icons\\INV_Misc_Bag_10_Blue",
 			cmd		= "trade",
-			tooltip = "Trade"
+			tooltip = WIM_L_TRADE
 		},
 		{
 			icon = "Interface\\Icons\\INV_Helmet_44",
 			cmd		= "inspect",
-			tooltip = "Inspect"
+			tooltip = WIM_L_INSPECT
 		},
 		{
 			icon = "Interface\\Icons\\Ability_Physical_Taunt",
 			cmd		= "ignore",
-			tooltip = "Ignore"
+			tooltip = WIM_L_IGNORE
 		},
 	};
 	for i=1,5 do
@@ -1023,15 +1017,15 @@ function WIM_ShorcutButton_Clicked()
 	local cmd = this.cmd;
 	local theUser = this:GetParent():GetParent().theUser;
 	if(cmd == "target") then
-		TargetByName(theUser, true);
+		TargetByName(theUser, true)
 	elseif(cmd == "invite") then
-		InviteByName(theUser);
+		InviteByName(theUser)
 	elseif(cmd == "trade") then
-		TargetByName(theUser, true);
-		InitiateTrade("target");
+		TargetByName(theUser, true)
+		InitiateTrade("target")
 	elseif(cmd == "inspect") then
-		TargetByName(theUser, true);
-		InspectUnit("target");
+		TargetByName(theUser, true)
+		InspectUnit("target")
 	elseif(cmd == "ignore") then
 		getglobal(this:GetParent():GetParent():GetName().."IgnoreConfirm"):Show();
 	end
@@ -1146,7 +1140,6 @@ function WIM_DisplayHistory(theUser)
 			end
 		end
 	end
-	--getglobal("WIM_msgFrame"..theUser.."ScrollingMessageFrame"):AddMessage(" ");
 end
 
 function WIM_LoadDefaultFilters()
@@ -1159,7 +1152,24 @@ function WIM_LoadDefaultFilters()
 	WIM_Filters["^YOU ARE BURNING!"] 		= "Ignore";
 	WIM_Filters["^YOU ARE THE BOMB!"] 		= "Ignore";
 	WIM_Filters["VOLATILE INFECTION"] 		= "Ignore";
-	WIM_Filters["^<GA"]						= "Ignore";
+	WIM_Filters["^<GA"]						= "Block";
+	WIM_Filters["USD"]						= "Block";
+	WIM_Filters["W@W"]						= "Block";
+	WIM_Filters["C@M"]						= "Block";
+	WIM_Filters["G4"]						= "Block";
+	WIM_Filters["G="]						= "Block";
+	WIM_Filters[">>"]						= "Ignore";
+	WIM_Filters[">>>"]						= "Ignore";
+	WIM_Filters["OKO"]						= "Block";
+	WIM_Filters["GAMES"]					= "Block";
+	WIM_Filters["NOST"]						= "Ignore";
+	WIM_Filters["DOLLARS"]					= "Block";
+	WIM_Filters["CQM"]						= "Block";
+	WIM_Filters["SERVICE"]					= "Ignore";
+	WIM_Filters["CHEAP"]					= "Block";
+	WIM_Filters["WWW"]						= "Block";
+	WIM_Filters["1-60"]						= "Block";
+--	WIM_Filters[""]						= "Ignore";
 	
 	WIM_FilteringScrollBar_Update();
 end
@@ -1279,26 +1289,6 @@ function WIM_Split(theString, thePattern)
 	return t
 end
 
--- function WIM_GetBattleWhoInfo(theUser)
--- 	local user, server = unpack(WIM_Split(theUser, "-"));
--- 	--[ call this function only if a "-" is in the name. Used to get cross realm info.
--- 	for i=1, GetNumRaidMembers() do 
--- 		local name, rank, subgroup, level, class, fileName, zone, online, isDead = GetRaidRosterInfo(i);
--- 		local race, raceEng = UnitRace("raid"..i);
--- 		local guildName, guildRankName, guildRankIndex = GetGuildInfo("raid"..i);
--- 		if(not guildName) then guildName=""; end
--- 		if(name == user) then
--- 			WIM_Windows[theUser].waiting_who = false;
--- 			WIM_Windows[theUser].class = class;
--- 			WIM_Windows[theUser].race = race;
--- 			WIM_Windows[theUser].guild = guildName;
--- 			WIM_Windows[theUser].level = level;
--- 			WIM_SetWhoInfo(theUser);
--- 			return;
--- 		end
--- 	end
--- end
-
 function WIM_SetTabFrameProps()
 	WIM_TabFrame:SetScale(WIM_Data.windowSize * 1);
 	WIM_TabFrame:SetAlpha(WIM_Data.windowAlpha);
@@ -1328,16 +1318,6 @@ function WIM_UpdateTabs()
 end
 
 function WIM_WindowOnShow()
---[[	if(WIM_TabMode.enabled) then
-		WIM_TabFrame:ClearAllPoints();
-		WIM_TabFrame:SetPoint("BOTTOMLEFT", this:GetName(), "TOPLEFT",45,-2);
-		WIM_UpdateTabs();
-		WIM_TabSetSelected(this.theUser);
-		WIM_TabFrame:Show();
-	else
-		WIM_TabFrame:Hide();
-	end
-]]
 end
 
 function WIM_GetTabByUser(theUser)
