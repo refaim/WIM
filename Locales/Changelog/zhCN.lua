@@ -2,7 +2,8 @@ if GetLocale() ~= "zhCN" then return end
 
 WIM_CHANGE_LOG = [[
 版本 1.3.7 (2026年02月02日)|cffffffff
-[*] - 职业颜色现在使用游戏内置的RAID_CLASS_COLORS
+[*] - 职业颜色现在使用游戏内置的RAID_CLASS_COLORS (DBFBlackbull)
+[*] - 修复宏密语：/w 名字 消息 现在可以正确发送 (Kirchlive)
 
 版本 1.3.6 (2026年02月02日)|cffffffff
 [+] - 完整本地化：全部9种支持语言的完整界面翻译

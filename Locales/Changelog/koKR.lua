@@ -2,7 +2,8 @@ if GetLocale() ~= "koKR" then return end
 
 WIM_CHANGE_LOG = [[
 버전 1.3.7 (2026년 02월 02일)|cffffffff
-[*] - 직업 색상이 이제 게임 내장 RAID_CLASS_COLORS 사용
+[*] - 직업 색상이 이제 게임 내장 RAID_CLASS_COLORS 사용 (DBFBlackbull)
+[*] - 매크로 귓속말 수정: /w 이름 메시지가 이제 올바르게 전송됨 (Kirchlive)
 
 버전 1.3.6 (2026년 02월 02일)|cffffffff
 [+] - 완전한 현지화: 9개 지원 언어 모두에 대한 전체 인터페이스 번역

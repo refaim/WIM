@@ -1,6 +1,7 @@
 WIM_CHANGE_LOG = [[
 Version 1.3.7 (02-02-2026)|cffffffff
-[*] - Class colors now use game's built-in RAID_CLASS_COLORS
+[*] - Class colors now use game's built-in RAID_CLASS_COLORS (DBFBlackbull)
+[*] - Fix macro whispers: /w Name message now sends correctly (Kirchlive)
 
 Version 1.3.6 (02-02-2026)|cffffffff
 [+] - Complete localization: full interface translation for all 9 supported languages

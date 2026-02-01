@@ -13,17 +13,24 @@ end
 function WIM_ChatEdit_ParseText(editBox, send)
 
 	local target
+	local msgText = ''
 
-	local _, _, command, parameter = strfind(editBox:GetText(), '^(/%S+)%s*(%S*)')
+	local _, _, command, rest = strfind(editBox:GetText(), '^(/%S+)%s*(.*)')
 	if command then
 		command = strupper(command)
+		rest = rest or ''
 		local i = 1
 		while true do
-			if getglobal('SLASH_WHISPER'..i) and command == strupper(TEXT(getglobal('SLASH_WHISPER'..i))) and parameter ~= '' then
-				target = gsub(strlower(parameter), '^%l', strupper)
+			if getglobal('SLASH_WHISPER'..i) and command == strupper(TEXT(getglobal('SLASH_WHISPER'..i))) and rest ~= '' then
+				local _, _, namepart, textpart = strfind(rest, '^(%S+)%s*(.*)')
+				if namepart then
+					target = gsub(strlower(namepart), '^%l', strupper)
+					msgText = textpart or ''
+				end
 				break
 			elseif getglobal('SLASH_REPLY'..i) and command == strupper(TEXT(getglobal('SLASH_REPLY'..i))) and ChatEdit_GetLastTellTarget(editBox) ~= '' then
 				target = ChatEdit_GetLastTellTarget(editBox)
+				msgText = rest or ''
 				break
 			elseif not getglobal('SLASH_WHISPER'..i) and not getglobal('SLASH_REPLY'..i) then
 				break
@@ -34,8 +41,14 @@ function WIM_ChatEdit_ParseText(editBox, send)
 
 	if target then
 		WIM_PostMessage(target, '', 5, '', '')
-		editBox:SetText('')
-		editBox:Hide()	
+		if msgText ~= '' then
+			-- Message text present (e.g. /w Name text or macro): let WoW send it
+			return WIM_ChatEdit_ParseText_orig(editBox, send)
+		else
+			-- No message text (just /w Name): open WIM window only
+			editBox:SetText('')
+			editBox:Hide()
+		end
 	else
 		return WIM_ChatEdit_ParseText_orig(editBox, send)
 	end

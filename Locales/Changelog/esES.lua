@@ -2,7 +2,8 @@ if GetLocale() ~= "esES" then return end
 
 WIM_CHANGE_LOG = [[
 Versión 1.3.7 (02/02/2026)|cffffffff
-[*] - Los colores de clase ahora usan RAID_CLASS_COLORS integrados del juego
+[*] - Los colores de clase ahora usan RAID_CLASS_COLORS integrados del juego (DBFBlackbull)
+[*] - Corregidos susurros por macro: /w Nombre mensaje ahora envía correctamente (Kirchlive)
 
 Versión 1.3.6 (02/02/2026)|cffffffff
 [+] - Localización completa: traducción completa de la interfaz para los 9 idiomas soportados

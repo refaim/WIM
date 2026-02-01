@@ -80,6 +80,7 @@ Check your Key Bindings screen (Escape > Key Bindings) for WIM's available actio
 - **[me0wg4ming](https://github.com/me0wg4ming)** - Async WHO loading, GM detection, Turtle WoW optimizations
 - **[Refaim](https://github.com/refaim)** - Current maintainer, localization system, code cleanup
 - **[DBFBlackbull](https://github.com/DBFBlackbull)** - Dynamic class colors
+- **[Kirchlive](https://github.com/Kirchlive)** - Macro whispers fix
 - **Claude** (Anthropic) - AI-assisted development and localization
 
 ### Special Thanks
