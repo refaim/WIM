@@ -1,6 +1,7 @@
 ## Interface: 11200
 ## Title: WIM
-## Author: Reworked by me0wg4ming
+## Author: Pazza (Bronzebeard)
+## X-Maintainer: Refaim
 ## Version: 1.3.5
 ## Notes: Give whispers an instant messenger feel.
 ## Notes-ruRU: Интерфейс для шепота.
