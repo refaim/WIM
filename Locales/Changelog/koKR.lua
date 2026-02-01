@@ -1,6 +1,9 @@
 if GetLocale() ~= "koKR" then return end
 
 WIM_CHANGE_LOG = [[
+버전 1.3.7 (2026년 02월 02일)|cffffffff
+[*] - 직업 색상이 이제 게임 내장 RAID_CLASS_COLORS 사용
+
 버전 1.3.6 (2026년 02월 02일)|cffffffff
 [+] - 완전한 현지화: 9개 지원 언어 모두에 대한 전체 인터페이스 번역
 [+] - 변경 로그가 모든 지원 언어로 번역됨

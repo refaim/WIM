@@ -79,6 +79,7 @@ Check your Key Bindings screen (Escape > Key Bindings) for WIM's available actio
 - **[KasVital](https://github.com/KasVital)** - Vanilla compatibility fixes, Cyrillic character support
 - **[me0wg4ming](https://github.com/me0wg4ming)** - Async WHO loading, GM detection, Turtle WoW optimizations
 - **[Refaim](https://github.com/refaim)** - Current maintainer, localization system, code cleanup
+- **[DBFBlackbull](https://github.com/DBFBlackbull)** - Dynamic class colors
 - **Claude** (Anthropic) - AI-assisted development and localization
 
 ### Special Thanks

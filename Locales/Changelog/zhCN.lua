@@ -1,6 +1,9 @@
 if GetLocale() ~= "zhCN" then return end
 
 WIM_CHANGE_LOG = [[
+版本 1.3.7 (2026年02月02日)|cffffffff
+[*] - 职业颜色现在使用游戏内置的RAID_CLASS_COLORS
+
 版本 1.3.6 (2026年02月02日)|cffffffff
 [+] - 完整本地化：全部9种支持语言的完整界面翻译
 [+] - 更新日志现已翻译成所有支持的语言

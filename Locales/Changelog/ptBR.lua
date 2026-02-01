@@ -1,6 +1,9 @@
 if GetLocale() ~= "ptBR" then return end
 
 WIM_CHANGE_LOG = [[
+Versão 1.3.7 (02/02/2026)|cffffffff
+[*] - Cores de classe agora usam RAID_CLASS_COLORS integrados do jogo
+
 Versão 1.3.6 (02/02/2026)|cffffffff
 [+] - Localização completa: tradução completa da interface para todos os 9 idiomas suportados
 [+] - Registro de alterações agora traduzido para todos os idiomas suportados

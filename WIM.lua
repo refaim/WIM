@@ -1,4 +1,4 @@
-WIM_VERSION = "1.3.6";
+WIM_VERSION = "1.3.7";
 
 WIM_Windows = {};
 WIM_EditBoxInFocus = nil;
@@ -1065,16 +1065,23 @@ function WIM_InitClassProps()
 	WIM_ClassIcons[WIM_LOCALIZED_SHAMAN] 	= "Interface\\AddOns\\WIM\\Images\\classSHAMAN";
 	WIM_ClassIcons[WIM_LOCALIZED_WARLOCK] 	= "Interface\\AddOns\\WIM\\Images\\classWARLOCK";
 	WIM_ClassIcons[WIM_LOCALIZED_WARRIOR] 	= "Interface\\AddOns\\WIM\\Images\\classWARRIOR";
-	
-	WIM_ClassColors[WIM_LOCALIZED_DRUID]	= "ff7d0a";
-	WIM_ClassColors[WIM_LOCALIZED_HUNTER]	= "abd473";
-	WIM_ClassColors[WIM_LOCALIZED_MAGE]		= "69ccf0";
-	WIM_ClassColors[WIM_LOCALIZED_PALADIN]	= "f58cba";
-	WIM_ClassColors[WIM_LOCALIZED_PRIEST]	= "ffffff";
-	WIM_ClassColors[WIM_LOCALIZED_ROGUE]	= "fff569";
-	WIM_ClassColors[WIM_LOCALIZED_SHAMAN]	= "f58cba";
-	WIM_ClassColors[WIM_LOCALIZED_WARLOCK]	= "9482ca";
-	WIM_ClassColors[WIM_LOCALIZED_WARRIOR]	= "c79c6e";
+
+	local function getColor(colorObject)
+		local r = colorObject.r * 255
+		local g = colorObject.g * 255
+		local b = colorObject.b * 255
+		return format("%02x%02x%02x", r, g, b)
+	end
+
+	WIM_ClassColors[WIM_LOCALIZED_DRUID]	= getColor(RAID_CLASS_COLORS["DRUID"]);
+	WIM_ClassColors[WIM_LOCALIZED_HUNTER]	= getColor(RAID_CLASS_COLORS["HUNTER"]);
+	WIM_ClassColors[WIM_LOCALIZED_MAGE]		= getColor(RAID_CLASS_COLORS["MAGE"]);
+	WIM_ClassColors[WIM_LOCALIZED_PALADIN]	= getColor(RAID_CLASS_COLORS["PALADIN"]);
+	WIM_ClassColors[WIM_LOCALIZED_PRIEST]	= getColor(RAID_CLASS_COLORS["PRIEST"]);
+	WIM_ClassColors[WIM_LOCALIZED_ROGUE]	= getColor(RAID_CLASS_COLORS["ROGUE"]);
+	WIM_ClassColors[WIM_LOCALIZED_SHAMAN]	= getColor(RAID_CLASS_COLORS["SHAMAN"]);
+	WIM_ClassColors[WIM_LOCALIZED_WARLOCK]	= getColor(RAID_CLASS_COLORS["WARLOCK"]);
+	WIM_ClassColors[WIM_LOCALIZED_WARRIOR]	= getColor(RAID_CLASS_COLORS["WARRIOR"]);
 end
 
 function WIM_UserWithClassColor(theUser)

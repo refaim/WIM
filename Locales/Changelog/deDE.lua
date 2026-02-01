@@ -1,6 +1,9 @@
 if GetLocale() ~= "deDE" then return end
 
 WIM_CHANGE_LOG = [[
+Version 1.3.7 (02.02.2026)|cffffffff
+[*] - Klassenfarben verwenden jetzt die eingebauten RAID_CLASS_COLORS des Spiels
+
 Version 1.3.6 (02.02.2026)|cffffffff
 [+] - Vollständige Lokalisierung: komplette Übersetzung der Benutzeroberfläche für alle 9 unterstützten Sprachen
 [+] - Änderungsprotokoll jetzt in alle unterstützten Sprachen übersetzt

@@ -1,4 +1,7 @@
 WIM_CHANGE_LOG = [[
+Version 1.3.7 (02-02-2026)|cffffffff
+[*] - Class colors now use game's built-in RAID_CLASS_COLORS
+
 Version 1.3.6 (02-02-2026)|cffffffff
 [+] - Complete localization: full interface translation for all 9 supported languages
 [+] - Changelog now translated into all supported languages

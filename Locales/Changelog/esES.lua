@@ -1,6 +1,9 @@
 if GetLocale() ~= "esES" then return end
 
 WIM_CHANGE_LOG = [[
+Versión 1.3.7 (02/02/2026)|cffffffff
+[*] - Los colores de clase ahora usan RAID_CLASS_COLORS integrados del juego
+
 Versión 1.3.6 (02/02/2026)|cffffffff
 [+] - Localización completa: traducción completa de la interfaz para los 9 idiomas soportados
 [+] - Registro de cambios ahora traducido a todos los idiomas soportados

@@ -9,3 +9,4 @@ When updating the addon version:
    - `WIM.lua` - the `WIM_VERSION` variable
 
 2. Update changelog in `Locales/Changelog/` for all locale files present in that folder.
+3. Consider updating `README.md` if the changes are significant (new features, new contributors, etc.).
