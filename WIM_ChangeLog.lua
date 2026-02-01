@@ -1,4 +1,7 @@
 WIM_CHANGE_LOG = [[
+Version 1.3.5b (02-02-2026)|cffffffff
+[*] - WHO cooldown: 30s for Turtle WoW, 5s for vanilla
+
 Version 1.3.5a (02-02-2026)|cffffffff
 [*] - Re-enable Block Low Level option (works fine with cross-faction)
 

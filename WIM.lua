@@ -1,4 +1,4 @@
-WIM_VERSION = "1.3.5a";
+WIM_VERSION = "1.3.5b";
 
 WIM_Windows = {};
 WIM_EditBoxInFocus = nil;
@@ -316,9 +316,9 @@ function WIM_PlayerCacheQueueEmpty()
 end
 
 function WIM_Update()
-	-- Turtle WoW: 30 second WHO cooldown (global) - GMs skip cooldown but wait for response
+	-- WHO cooldown: 30s for Turtle WoW, 5s for vanilla. GMs skip cooldown but wait for response
 	if not WIM_IsGM then
-		local WHO_COOLDOWN = 30
+		local WHO_COOLDOWN = TURTLE_WOW_VERSION and 30 or 5
 		if WIM_LastWhoSent and GetTime() - WIM_LastWhoSent < WHO_COOLDOWN then
 			return
 		end
