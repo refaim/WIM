@@ -1,4 +1,16 @@
 WIM_CHANGE_LOG = [[
+Version 1.3.5 (12-29-2025)|cffffffff
+[+] - WHO info now loads asynchronously (messages display immediately)
+[+] - Round-robin WHO queue for fair distribution across whisper windows
+[+] - Auto-remove players from WHO queue after 5 failed attempts
+[+] - GM whisper detection and flagging (Turtle WoW)
+[+] - Added /wimdebug command for debugging WHO system
+[*] - Increased WHO cooldown to 30s for Turtle WoW compatibility
+
+Version 1.3.4 (07-28-2025)|cffffffff
+[*] - Fix cyrillic characters displaying
+[+] - Incorporate changes from KasVital
+
 Version 1.3.3 (12-27-2017)|cffffffff
 [+] - refactoring by shirsig
 

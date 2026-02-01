@@ -251,10 +251,21 @@ function WIM_FriendsFrame_OnEvent()
     	WIM_LastWhoListUpdate = GetTime()
 
     	if WIM_WhoScanInProgress then
-	    	for i=1,GetNumWhoResults() do
+			local numResults = GetNumWhoResults()
+			if WIM_Debug then
+				local timestamp = date("%H:%M:%S")
+				DEFAULT_CHAT_FRAME:AddMessage("|cff888888[" .. timestamp .. "]|r |cff00ff00[WIM WHO]|r WHO_LIST_UPDATE received, results: " .. numResults)
+			end
+
+			-- Check results against our queue
+			for i=1,numResults do
 				local name, guild, level, race, class, zone = GetWhoInfo(i)
 
 				if WIM_PlayerCacheQueue[name] then
+					if WIM_Debug then
+						local timestamp = date("%H:%M:%S")
+						DEFAULT_CHAT_FRAME:AddMessage("|cff888888[" .. timestamp .. "]|r |cff00ff00[WIM WHO]|r Found: " .. name .. " - " .. tostring(level) .. " " .. tostring(race) .. " " .. tostring(class))
+					end
 					local callbacks = WIM_PlayerCacheQueue[name].callbacks
 					WIM_PlayerCacheQueue[name] = nil
 
@@ -274,9 +285,13 @@ function WIM_FriendsFrame_OnEvent()
 			if WIM_PlayerCacheQueueEmpty() then
 				WIM_WhoScanInProgress = false
 				SetWhoToUI(0)
+				if WIM_Debug then
+					local timestamp = date("%H:%M:%S")
+					DEFAULT_CHAT_FRAME:AddMessage("|cff888888[" .. timestamp .. "]|r |cff00ff00[WIM WHO]|r Queue empty, scan complete")
+				end
 			end
 
-			return
+			return -- Don't pass to original handler (prevents WHO window from opening)
 		end
 	end
 

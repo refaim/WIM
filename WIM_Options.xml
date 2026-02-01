@@ -2090,7 +2090,7 @@
 											</OnLeave>
 										</Scripts>
 									</CheckButton>
-									<CheckButton name="$parentBlockLowLevel">
+									<CheckButton name="$parentBlockLowLevel" hidden="true">
 										<Size>
 											<AbsDimension x="25" y="25" />
 										</Size>
