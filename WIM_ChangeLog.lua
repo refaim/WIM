@@ -1,4 +1,7 @@
 WIM_CHANGE_LOG = [[
+Version 1.3.5a (02-02-2026)|cffffffff
+[*] - Re-enable Block Low Level option (works fine with cross-faction)
+
 Version 1.3.5 (12-29-2025)|cffffffff
 [+] - WHO info now loads asynchronously (messages display immediately)
 [+] - Round-robin WHO queue for fair distribution across whisper windows

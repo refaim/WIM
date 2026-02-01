@@ -2,7 +2,7 @@
 ## Title: WIM
 ## Author: Pazza (Bronzebeard)
 ## X-Maintainer: Refaim
-## Version: 1.3.5
+## Version: 1.3.5a
 ## Notes: Give whispers an instant messenger feel.
 ## Notes-ruRU: Интерфейс для шепота.
 ## DefaultState: Enabled
