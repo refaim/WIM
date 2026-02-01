@@ -2,9 +2,17 @@
 ## Title: WIM
 ## Author: Pazza (Bronzebeard)
 ## X-Maintainer: Refaim
-## Version: 1.3.5b
+## Version: 1.3.6
 ## Notes: Give whispers an instant messenger feel.
-## Notes-ruRU: Интерфейс для шепота.
+## Notes-deDE: Verleiht Flüstern ein Instant-Messenger-Gefühl.
+## Notes-enUS: Give whispers an instant messenger feel.
+## Notes-esES: Dale a los susurros un aspecto de mensajería instantánea.
+## Notes-frFR: Donne aux chuchotements une apparence de messagerie instantanée.
+## Notes-koKR: 귓속말에 인스턴트 메신저 느낌을 줍니다.
+## Notes-ptBR: Dê aos sussurros uma sensação de mensageiro instantâneo.
+## Notes-ruRU: Придаёт шёпоту вид мессенджера.
+## Notes-zhCN: 让密语拥有即时通讯的感觉。
+## Notes-zhTW: 讓密語擁有即時通訊的感覺。
 ## DefaultState: Enabled
 ## OptionalDeps: Titan
 ## SavedVariables: WIM_Data, WIM_Alias, WIM_Filters, WIM_History

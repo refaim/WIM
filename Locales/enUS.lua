@@ -1,31 +1,31 @@
-	BINDING_HEADER_WIMMOD = "WIM (WoW Instant Messenger)";
-	BINDING_NAME_WIMSHOWNEW = "Show New Messages";
-	BINDING_NAME_WIMHISTORY = "History Viewer";
-	BINDING_NAME_WIMENABLE = "Enable/Disable";
-	BINDING_NAME_WIMTOGGLE = "Toggle Messages";
-	BINDING_NAME_WIMSHOWALL = "Show All Messages";
-	BINDING_NAME_WIMHIDEALL = "Hide All Messages";
+BINDING_HEADER_WIMMOD = "WIM (WoW Instant Messenger)";
+BINDING_NAME_WIMSHOWNEW = "Show New Messages";
+BINDING_NAME_WIMHISTORY = "History Viewer";
+BINDING_NAME_WIMENABLE = "Enable/Disable";
+BINDING_NAME_WIMTOGGLE = "Toggle Messages";
+BINDING_NAME_WIMSHOWALL = "Show All Messages";
+BINDING_NAME_WIMHIDEALL = "Hide All Messages";
 
-	-- Class Names
-	WIM_LOCALIZED_DRUID = "Druid";
-	WIM_LOCALIZED_HUNTER = "Hunter";
-	WIM_LOCALIZED_MAGE = "Mage";
-	WIM_LOCALIZED_PALADIN = "Paladin";
-	WIM_LOCALIZED_PRIEST = "Priest";
-	WIM_LOCALIZED_ROGUE = "Rogue";
-	WIM_LOCALIZED_SHAMAN = "Shaman";
-	WIM_LOCALIZED_WARLOCK = "Warlock";
-	WIM_LOCALIZED_WARRIOR = "Warrior";
+-- Class Names
+WIM_LOCALIZED_DRUID = "Druid";
+WIM_LOCALIZED_HUNTER = "Hunter";
+WIM_LOCALIZED_MAGE = "Mage";
+WIM_LOCALIZED_PALADIN = "Paladin";
+WIM_LOCALIZED_PRIEST = "Priest";
+WIM_LOCALIZED_ROGUE = "Rogue";
+WIM_LOCALIZED_SHAMAN = "Shaman";
+WIM_LOCALIZED_WARLOCK = "Warlock";
+WIM_LOCALIZED_WARRIOR = "Warrior";
 
 --CFM
-	--icons.xml
+--icons.xml
 WIM_L_CONVERSATIONS="Conversations";
 WIM_L_CONVERSATIONSMENU="Conversations Menu";
 WIM_L_SHOWNEWMESSAGES="Show New Messages";
 WIM_L_WIMOPTIONS="WIM Options";
 WIM_L_RIGHTCLICK="Right-Click";
 WIM_L_LEFTCLICK="Left-Click";
-	--options.xml
+--options.xml
 WIM_L_ENABLEWIM="Enable WIM";
 WIM_L_DISPLAYOPT="Display Options";
 WIM_L_INCOMWHISP="Incoming Whispers";
@@ -106,7 +106,7 @@ WIM_L_IGNORE="Ignore";
 WIM_L_BLOCK="Block";
 WIM_L_PAZZA="Pazza";
 WIM_L_NONEWMESS="No new messages.";
-WIM_L_RECENTCONV="Recent Conversation 1 or 20";
+WIM_L_RECENTCONV="Recent Conversation %d of %d";
 WIM_L_WIMDOC="WIM Documentation";
 WIM_L_DESCRIPTION=" Description ";
 WIM_L_VERSIONHISTORY=" Version History ";
@@ -155,6 +155,12 @@ WIM_L_INSPECT="Inspect";
 WIM_L_TRADE="Trade";
 WIM_L_INVITE="Invite";
 WIM_L_TARGET="Target";
+WIM_L_GAMEMASTER="Game Master";
+WIM_L_NEWMESSAGE="New message!";
+WIM_L_CONVCLOSED="Conversation closed.";
+WIM_L_PURGEDMESSAGES="[WIM]: Purged %d out-dated messages from history.";
+--wim_titan.lua
+WIM_L_MESSAGES="Messages: ";
 --wim.xml
 WIM_L_XTOOLTIP="Shift &amp; Left-Click to end conversation.";
 WIM_L_HISTORYTOOLTIP="Click to view message history.";
@@ -181,8 +187,7 @@ Advanced Slash Commands:
 
 
 WIM integrates itself into the following addons:|cffffffff
-TitanPanel
-(Coming soon - Foobar 2.0 Support)|r
+TitanPanel|r
 ]]
 
 WIM_DIDYOUKNOW = [[

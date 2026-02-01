@@ -1,4 +1,9 @@
 WIM_CHANGE_LOG = [[
+Version 1.3.6 (02-02-2026)|cffffffff
+[+] - Complete localization: full interface translation for all 9 supported languages
+[+] - Changelog now translated into all supported languages
+[+] - Added README documentation
+
 Version 1.3.5b (02-02-2026)|cffffffff
 [*] - WHO cooldown: 30s for Turtle WoW, 5s for vanilla
 
@@ -118,8 +123,8 @@ Version 1.3.1 (10-17-2006)|cffffffff
 [+] - Added class icons to message window.
 
 |rVersion 1.0.19 (09-12-2006) |cffffffff
-[*] - Fixed the problem with in game languages (Common/Orcish). This should also resolve problems with other lingual wow interfaces as well. 
-[*] - Recoded some function hooks to avoid receiving duplicate messages due to addon conflicts. 
+[*] - Fixed the problem with in game languages (Common/Orcish). This should also resolve problems with other lingual wow interfaces as well.
+[*] - Recoded some function hooks to avoid receiving duplicate messages due to addon conflicts.
 
 |rVersion 1.0.18 (09-12-2006) |cffffffff
 [!] - Initial public release.

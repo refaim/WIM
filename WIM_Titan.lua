@@ -48,7 +48,7 @@ function WIM_Titan_GetButtonText()
 		end
 	end
 	
-	return msgColor.."Messages: ", "|cffffffff"..WIM_NewMessageCount;
+	return msgColor..WIM_L_MESSAGES, "|cffffffff"..WIM_NewMessageCount;
 end
 
 function WIM_Titan_GetToolTipText()

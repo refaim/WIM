@@ -1,4 +1,4 @@
-WIM_VERSION = "1.3.5b";
+WIM_VERSION = "1.3.6";
 
 WIM_Windows = {};
 WIM_EditBoxInFocus = nil;
@@ -1101,7 +1101,7 @@ function WIM_SetWhoInfo(theUser)
 			getglobal(WIM_Windows[theUser].frame.."From"):SetText("|cff00ccff<GM>|r "..WIM_GetAlias(theUser));
 		end
 		-- Show GM in details instead of class info
-		getglobal(WIM_Windows[theUser].frame.."CharacterDetails"):SetText("|cff00ccffGame Master|r");
+		getglobal(WIM_Windows[theUser].frame.."CharacterDetails"):SetText("|cff00ccff"..WIM_L_GAMEMASTER.."|r");
 		return; -- Don't show class info for GMs
 	elseif(WIM_Data.characterInfo.classIcon and WIM_PlayerCache[theUser] and WIM_ClassIcons[WIM_PlayerCache[theUser].class]) then
 		classIcon:SetTexture(WIM_ClassIcons[WIM_PlayerCache[theUser].class]);
@@ -1391,7 +1391,7 @@ function WIM_HistoryPurge()
 			end
 		end
 		if(delCount > 0) then
-			DEFAULT_CHAT_FRAME:AddMessage("[WIM]: Purged "..delCount.." out-dated messages from history.");
+			DEFAULT_CHAT_FRAME:AddMessage(format(WIM_L_PURGEDMESSAGES, delCount));
 		end
 	end
 end
@@ -1427,19 +1427,19 @@ function WIM_ToggleWindow_Toggle()
 	
 	WIM_ToggleWindowUser:SetText(WIM_GetAlias(WIM_RecentList[WIM_ToggleWindow_Index], true));
 	WIM_ToggleWindow.theUser = WIM_RecentList[WIM_ToggleWindow_Index];
-	WIM_ToggleWindowCount:SetText("Recent Conversation "..WIM_ToggleWindow_Index.." of "..table.getn(WIM_RecentList));
+	WIM_ToggleWindowCount:SetText(format(WIM_L_RECENTCONV, WIM_ToggleWindow_Index, table.getn(WIM_RecentList)));
 	if(WIM_Windows[WIM_RecentList[WIM_ToggleWindow_Index]]) then
 		if(WIM_Windows[WIM_RecentList[WIM_ToggleWindow_Index]].newMSG) then
-			WIM_ToggleWindowStatus:SetText("New message!");
+			WIM_ToggleWindowStatus:SetText(WIM_L_NEWMESSAGE);
 			WIM_ToggleWindowIconNew:Show();
 			WIM_ToggleWindowIconRead:Hide();
 		else
-			WIM_ToggleWindowStatus:SetText("No new messages.");
+			WIM_ToggleWindowStatus:SetText(WIM_L_NONEWMESS);
 			WIM_ToggleWindowIconRead:Show();
 			WIM_ToggleWindowIconNew:Hide();
 		end
 	else
-		WIM_ToggleWindowStatus:SetText("Conversation closed.");
+		WIM_ToggleWindowStatus:SetText(WIM_L_CONVCLOSED);
 		WIM_ToggleWindowIconRead:Show();
 		WIM_ToggleWindowIconNew:Hide();
 	end
