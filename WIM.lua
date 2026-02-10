@@ -588,8 +588,8 @@ function WIM_PostMessage(user, msg, ttype, from, raw_msg, hotkeyFix)
 			else
 				WIM_DebugMsg("|cffff00ff[WIM GM]|r PostMessage: Sending WHO for: " .. user .. " | isGM: " .. tostring(WIM_PlayerCache[user] and WIM_PlayerCache[user].isGM))
 				WIM_WhoInfo(user, function()
-					-- Don't update if player became GM in the meantime
-					if not (WIM_PlayerCache[user] and WIM_PlayerCache[user].isGM) then
+					-- Window may have been closed while waiting for WHO response
+					if WIM_Windows[user] and not (WIM_PlayerCache[user] and WIM_PlayerCache[user].isGM) then
 						WIM_SetWhoInfo(user)
 					end
 				end) 
