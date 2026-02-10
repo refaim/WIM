@@ -396,6 +396,15 @@ function WIM_SetUpHooks()
 		end)
 	end
 
+	--Clear WIM_EditBoxInFocus when vanilla chat edit box is shown
+	local origChatEditBoxOnShow = ChatFrameEditBox:GetScript('OnShow')
+	ChatFrameEditBox:SetScript('OnShow', function()
+		WIM_EditBoxInFocus = nil
+		if origChatEditBoxOnShow then
+			origChatEditBoxOnShow()
+		end
+	end)
+
 	--Hook Friends Frame Send Message Button
 	FriendsFrame_SendMessage = WIM_FriendsFrame_SendMessage;
 	
@@ -468,6 +477,43 @@ function WIM_SetUpHooks()
 			frame:SetScript("OnClick", function() oldFunc(); WIM_ItemButton_OnClick(arg1); end);
 		end
 	end
+	--Hook Quest Log shift+click for quest name linking
+	WIM_QuestLogTitleButton_OnClick_orig = QuestLogTitleButton_OnClick
+	QuestLogTitleButton_OnClick = function(button)
+		if IsShiftKeyDown() and not this.isHeader and not ChatFrameEditBox:IsVisible() and WIM_EditBoxInFocus then
+			-- Temporarily show ChatFrameEditBox so other addons (e.g. pfQuest) can insert quest links
+			local prevText = ChatFrameEditBox:GetText()
+			local prevFocus = WIM_EditBoxInFocus
+			ChatFrameEditBox:SetText("")
+			ChatFrameEditBox:Show()
+			WIM_QuestLogTitleButton_OnClick_orig(button)
+			local result = ChatFrameEditBox:GetText()
+			ChatFrameEditBox:SetText(prevText)
+			ChatFrameEditBox:Hide()
+			WIM_EditBoxInFocus = prevFocus
+			if result == "" then
+				-- No addon inserted a link, fall back to plain quest name
+				local questIndex = this:GetID() + FauxScrollFrame_GetOffset(QuestLogListScrollFrame)
+				result = gsub(this:GetText(), " *(.*)", "%1")
+				QuestLog_SetSelection(questIndex)
+				QuestLog_Update()
+			end
+			WIM_EditBoxInFocus:Insert(result)
+			return
+		end
+		WIM_QuestLogTitleButton_OnClick_orig(button)
+	end
+
+	--Hook Quest Log reward item shift+click for item linking
+	WIM_QuestLogRewardItem_OnClick_orig = QuestLogRewardItem_OnClick
+	QuestLogRewardItem_OnClick = function()
+		if IsShiftKeyDown() and this.rewardType ~= "spell" and not ChatFrameEditBox:IsVisible() and WIM_EditBoxInFocus then
+			WIM_EditBoxInFocus:Insert(GetQuestLogItemLink(this.type, this:GetID()))
+			return
+		end
+		WIM_QuestLogRewardItem_OnClick_orig()
+	end
+
 	WIM_ButtonsHooked = true;
 end
 

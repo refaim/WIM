@@ -406,7 +406,11 @@
 						WIM_EditBoxInFocus = this;
 					</OnEditFocusGained>
 					<OnEditFocusLost>
-						WIM_EditBoxInFocus = nil;
+						-- Keep WIM_EditBoxInFocus while the WIM window is visible
+						-- so that shift+click linking works even after clicking other UI
+						if not this:GetParent():IsVisible() then
+							WIM_EditBoxInFocus = nil;
+						end
 					</OnEditFocusLost>
 				</Scripts>
 			</EditBox>
@@ -585,6 +589,9 @@
 				local user = this.theUser;
 				WIM_Windows[user].is_visible = false;
 				WIM_Windows[user].newMSG = false;
+				if WIM_EditBoxInFocus == getglobal(this:GetName().."MsgBox") then
+					WIM_EditBoxInFocus = nil;
+				end
 			</OnHide>
 		</Scripts>
 	</Frame>
