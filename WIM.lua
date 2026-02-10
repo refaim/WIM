@@ -491,7 +491,7 @@ function WIM_ChatFrame_OnEvent(event)
 	elseif(event == "CHAT_MSG_SYSTEM") then
 		local tstart,tfinish = string.find(arg1, "\'(%a+)\'");
 		if(tstart ~= nil and tfinish ~= nil) then
-			user = string.sub(arg1, tstart+1, tfinish-1);
+			local user = string.sub(arg1, tstart+1, tfinish-1);
 			user = string.gsub(user, "^%l", string.upper)
 			tstart, tfinish = string.find(arg1, "playing");
 			if(tstart ~= nil and WIM_Windows[user] ~= nil) then
@@ -545,7 +545,7 @@ function WIM_ChatFrameSupressor_OnEvent(event)
 	elseif(event == "CHAT_MSG_SYSTEM") then
 		local tstart,tfinish = string.find(arg1, "\'(%a+)\'");
 		if(tstart ~= nil and tfinish ~= nil) then
-			user = string.sub(arg1, tstart+1, tfinish-1);
+			local user = string.sub(arg1, tstart+1, tfinish-1);
 			user = string.gsub(user, "^%l", string.upper)
 			tstart, tfinish = string.find(arg1, "playing");
 			if(tstart ~= nil and WIM_Windows[user] ~= nil) then
