@@ -8,5 +8,5 @@ When updating the addon version:
    - `WIM.toc` - the `## Version:` field
    - `WIM.lua` - the `WIM_VERSION` variable
 
-2. Update changelog in `Locales/Changelog/` for all locale files present in that folder.
+2. Update changelog in `Locales/Changelog/` for all locale files present in that folder. Write changelog entries for end users, not developers — avoid internal details like variable names, function names, or implementation specifics.
 3. Consider updating `README.md` if the changes are significant (new features, new contributors, etc.).

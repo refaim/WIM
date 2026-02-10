@@ -1,40 +1,37 @@
 if GetLocale() ~= "frFR" then return end
 
 WIM_CHANGE_LOG = [[
-Version 1.3.7 (02/02/2026)|cffffffff
-[*] - Les couleurs de classe utilisent maintenant les RAID_CLASS_COLORS intégrés du jeu (DBFBlackbull)
-[*] - Correction des chuchotements par macro : /w Nom message s'envoie maintenant correctement (Kirchlive)
+|rVersion 1.3.8 (11/02/2026)|cffffffff
+[*] - Shift+clic dans le Journal de quêtes insère maintenant les quêtes et leurs récompenses dans les fenêtres WIM
+[*] - La touche de réponse ne nécessite plus un double appui pour le focus
+[*] - Correction du crash lors de la fermeture d'une fenêtre pendant une requête WHO
+[*] - Le filtre de date dans l'historique ne se réinitialise plus en cliquant sur le même nom
+[*] - Correction de "&amp;" affiché au lieu de "&" dans l'infobulle du bouton fermer
+[+] - Le format de date dans l'historique s'adapte maintenant à la langue du jeu
+[-] - Suppression des filtres anti-spam par défaut obsolètes
 
-Version 1.3.6 (02/02/2026)|cffffffff
-[+] - Localisation complète : traduction intégrale de l'interface pour les 9 langues supportées
-[+] - Journal des modifications maintenant traduit dans toutes les langues supportées
-[+] - Ajout de la documentation README
+|rVersion 1.3.7 (02/02/2026)|cffffffff
+[*] - Les couleurs de classe correspondent maintenant exactement aux valeurs du jeu (DBFBlackbull)
+[*] - Les macros de chuchotement (/w Nom message) s'envoient maintenant correctement (Kirchlive)
 
-Version 1.3.5b (02/02/2026)|cffffffff
-[*] - Délai WHO : 30s pour Turtle WoW, 5s pour vanilla
+|rVersion 1.3.6 (02/02/2026)|cffffffff
+[+] - Traduction complète de l'interface pour les 9 langues supportées
 
-Version 1.3.5a (02/02/2026)|cffffffff
-[*] - Réactivation de l'option Bloquer bas niveau (fonctionne bien avec inter-faction)
+|rVersion 1.3.5 (29/12/2025)|cffffffff
+[+] - Les messages s'affichent maintenant instantanément ; les infos du joueur se chargent en arrière-plan (me0wg4ming)
+[+] - Les chuchotements de MJ sont maintenant mis en évidence (me0wg4ming)
 
-Version 1.3.5 (29/12/2025)|cffffffff
-[+] - Les infos WHO se chargent maintenant de manière asynchrone (les messages s'affichent immédiatement)
-[+] - File WHO round-robin pour une distribution équitable entre les fenêtres de chuchotement
-[+] - Suppression automatique des joueurs de la file WHO après 5 tentatives échouées
-[+] - Détection et marquage des chuchotements de MJ (Turtle WoW)
-[+] - Ajout de la commande /wimdebug pour déboguer le système WHO
-[*] - Délai WHO augmenté à 30s pour la compatibilité Turtle WoW
-
-Version 1.3.4 (28/07/2025)|cffffffff
+|rVersion 1.3.4 (28/07/2025)|cffffffff
 [*] - Correction de l'affichage des caractères cyrilliques
-[+] - Intégration des modifications de KasVital
+[+] - Améliorations de la localisation et de l'interface (KasVital)
 
-Version 1.3.3 (27/12/2017)|cffffffff
+|rVersion 1.3.3 (27/12/2017)|cffffffff
 [+] - Refactorisation par shirsig
 
-Version 1.3.2 (05/01/2017)|cffffffff
+|rVersion 1.3.2 (05/01/2017)|cffffffff
 [+] - Traduit en russe (ruRU)
 
-Version 1.3.1 (17/10/2006)|cffffffff
+|rVersion 1.3.1 (17/10/2006)|cffffffff
 [+] - Création d'un nouveau menu d'icône de minicarte. N'utilise plus le menu déroulant de Blizzard.
 [+] - Vous pouvez maintenant fermer les conversations depuis le menu de l'icône de minicarte.
 [*] - Modifications de code requises pour le plugin Titan et le nouveau menu d'icône de minicarte.

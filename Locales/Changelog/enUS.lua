@@ -1,38 +1,35 @@
 WIM_CHANGE_LOG = [[
-Version 1.3.7 (02-02-2026)|cffffffff
-[*] - Class colors now use game's built-in RAID_CLASS_COLORS (DBFBlackbull)
-[*] - Fix macro whispers: /w Name message now sends correctly (Kirchlive)
+|rVersion 1.3.8 (02-11-2026)|cffffffff
+[*] - Shift+click in the Quest Log now links quests and their rewards into WIM windows
+[*] - Chat Reply keybinding no longer requires pressing twice to focus
+[*] - Fixed a crash that could occur when closing a window during WHO lookup
+[*] - History date filter no longer resets when clicking the same name
+[*] - Fixed "&" displaying as "&amp;" in close button tooltip
+[+] - Date format in message history now matches your game language
+[-] - Removed outdated default spam filters
 
-Version 1.3.6 (02-02-2026)|cffffffff
-[+] - Complete localization: full interface translation for all 9 supported languages
-[+] - Changelog now translated into all supported languages
-[+] - Added README documentation
+|rVersion 1.3.7 (02-02-2026)|cffffffff
+[*] - Class colors now accurately match the game defaults (DBFBlackbull)
+[*] - Whisper macros (/w Name message) now send correctly (Kirchlive)
 
-Version 1.3.5b (02-02-2026)|cffffffff
-[*] - WHO cooldown: 30s for Turtle WoW, 5s for vanilla
+|rVersion 1.3.6 (02-02-2026)|cffffffff
+[+] - Full interface translation for all 9 supported languages
 
-Version 1.3.5a (02-02-2026)|cffffffff
-[*] - Re-enable Block Low Level option (works fine with cross-faction)
+|rVersion 1.3.5 (12-29-2025)|cffffffff
+[+] - Messages now appear instantly; player info loads in the background (me0wg4ming)
+[+] - GM whispers are now highlighted (me0wg4ming)
 
-Version 1.3.5 (12-29-2025)|cffffffff
-[+] - WHO info now loads asynchronously (messages display immediately)
-[+] - Round-robin WHO queue for fair distribution across whisper windows
-[+] - Auto-remove players from WHO queue after 5 failed attempts
-[+] - GM whisper detection and flagging (Turtle WoW)
-[+] - Added /wimdebug command for debugging WHO system
-[*] - Increased WHO cooldown to 30s for Turtle WoW compatibility
+|rVersion 1.3.4 (07-28-2025)|cffffffff
+[*] - Fixed cyrillic character display
+[+] - Localization and UI improvements (KasVital)
 
-Version 1.3.4 (07-28-2025)|cffffffff
-[*] - Fix cyrillic characters displaying
-[+] - Incorporate changes from KasVital
-
-Version 1.3.3 (12-27-2017)|cffffffff
+|rVersion 1.3.3 (12-27-2017)|cffffffff
 [+] - refactoring by shirsig
 
-Version 1.3.2 (01-05-2017)|cffffffff
+|rVersion 1.3.2 (01-05-2017)|cffffffff
 [+] - translated into ruRU
 
-Version 1.3.1 (10-17-2006)|cffffffff
+|rVersion 1.3.1 (10-17-2006)|cffffffff
 [+] - Created new minimap icon menu. No longer using Blizzards Drop Down Menu.
 [+] - You can now close conversations from the minimap icon menu.
 [*] - Made required code changes for titan plugin and new minimap icon menu.

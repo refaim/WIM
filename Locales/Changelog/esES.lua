@@ -1,40 +1,37 @@
 if GetLocale() ~= "esES" then return end
 
 WIM_CHANGE_LOG = [[
-Versión 1.3.7 (02/02/2026)|cffffffff
-[*] - Los colores de clase ahora usan RAID_CLASS_COLORS integrados del juego (DBFBlackbull)
-[*] - Corregidos susurros por macro: /w Nombre mensaje ahora envía correctamente (Kirchlive)
+|rVersión 1.3.8 (11/02/2026)|cffffffff
+[*] - Shift+clic en el Registro de misiones ahora enlaza misiones y sus recompensas en ventanas WIM
+[*] - La tecla de respuesta ya no requiere doble pulsación para enfocar
+[*] - Corregido error al cerrar una ventana durante consulta WHO
+[*] - El filtro de fecha en historial ya no se reinicia al hacer clic en el mismo nombre
+[*] - Corregido "&amp;" mostrándose en lugar de "&" en tooltip del botón cerrar
+[+] - El formato de fecha en historial ahora se adapta al idioma del juego
+[-] - Eliminados filtros de spam predeterminados obsoletos
 
-Versión 1.3.6 (02/02/2026)|cffffffff
-[+] - Localización completa: traducción completa de la interfaz para los 9 idiomas soportados
-[+] - Registro de cambios ahora traducido a todos los idiomas soportados
-[+] - Añadida documentación README
+|rVersión 1.3.7 (02/02/2026)|cffffffff
+[*] - Los colores de clase ahora coinciden exactamente con los valores del juego (DBFBlackbull)
+[*] - Los macros de susurro (/w Nombre mensaje) ahora envían correctamente (Kirchlive)
 
-Versión 1.3.5b (02/02/2026)|cffffffff
-[*] - Tiempo de espera WHO: 30s para Turtle WoW, 5s para vanilla
+|rVersión 1.3.6 (02/02/2026)|cffffffff
+[+] - Traducción completa de la interfaz para los 9 idiomas soportados
 
-Versión 1.3.5a (02/02/2026)|cffffffff
-[*] - Reactivada la opción Bloquear nivel bajo (funciona bien con entre facciones)
+|rVersión 1.3.5 (29/12/2025)|cffffffff
+[+] - Los mensajes ahora aparecen al instante; la info del jugador se carga en segundo plano (me0wg4ming)
+[+] - Los susurros de GM ahora se destacan (me0wg4ming)
 
-Versión 1.3.5 (29/12/2025)|cffffffff
-[+] - La info WHO ahora se carga de forma asíncrona (los mensajes se muestran inmediatamente)
-[+] - Cola WHO round-robin para distribución justa entre ventanas de susurro
-[+] - Eliminación automática de jugadores de la cola WHO tras 5 intentos fallidos
-[+] - Detección y marcado de susurros de GM (Turtle WoW)
-[+] - Añadido comando /wimdebug para depurar el sistema WHO
-[*] - Aumentado el tiempo de espera WHO a 30s para compatibilidad con Turtle WoW
-
-Versión 1.3.4 (28/07/2025)|cffffffff
+|rVersión 1.3.4 (28/07/2025)|cffffffff
 [*] - Corregida la visualización de caracteres cirílicos
-[+] - Incorporados cambios de KasVital
+[+] - Mejoras de localización e interfaz (KasVital)
 
-Versión 1.3.3 (27/12/2017)|cffffffff
+|rVersión 1.3.3 (27/12/2017)|cffffffff
 [+] - Refactorización por shirsig
 
-Versión 1.3.2 (05/01/2017)|cffffffff
+|rVersión 1.3.2 (05/01/2017)|cffffffff
 [+] - Traducido al ruso (ruRU)
 
-Versión 1.3.1 (17/10/2006)|cffffffff
+|rVersión 1.3.1 (17/10/2006)|cffffffff
 [+] - Creado nuevo menú del icono del minimapa. Ya no usa el menú desplegable de Blizzard.
 [+] - Ahora puedes cerrar conversaciones desde el menú del icono del minimapa.
 [*] - Realizados cambios de código necesarios para el plugin Titan y el nuevo menú del minimapa.

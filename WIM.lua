@@ -1,4 +1,4 @@
-WIM_VERSION = "1.3.7";
+WIM_VERSION = "1.3.8";
 
 WIM_Windows = {};
 WIM_EditBoxInFocus = nil;
@@ -258,6 +258,9 @@ function WIM_Incoming(event)
 				end
 			end
 			WIM_Help:Show();
+			if WIM_Data.versionLastLoaded ~= "" then
+				WIM_Help_ChangeLog_Click();
+			end
 		end
 		WIM_Data.versionLastLoaded = WIM_VERSION;
 		

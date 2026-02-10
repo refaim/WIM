@@ -1,40 +1,37 @@
 if GetLocale() ~= "deDE" then return end
 
 WIM_CHANGE_LOG = [[
-Version 1.3.7 (02.02.2026)|cffffffff
-[*] - Klassenfarben verwenden jetzt die eingebauten RAID_CLASS_COLORS des Spiels (DBFBlackbull)
-[*] - Makro-Flüstern behoben: /w Name Nachricht sendet jetzt korrekt (Kirchlive)
+|rVersion 1.3.8 (11.02.2026)|cffffffff
+[*] - Shift+Klick im Questlog verlinkt jetzt Quests und ihre Belohnungen in WIM-Fenster
+[*] - Chat-Antwort-Taste erfordert nicht mehr doppeltes Drücken zum Fokussieren
+[*] - Absturz behoben beim Schließen eines Fensters während WHO-Abfrage
+[*] - Datumsfilter im Verlauf wird nicht mehr bei erneutem Klick zurückgesetzt
+[*] - "&amp;" wird nicht mehr statt "&" im Schließen-Tooltip angezeigt
+[+] - Datumsformat im Verlauf passt sich jetzt der Spielsprache an
+[-] - Veraltete Standard-Spam-Filter entfernt
 
-Version 1.3.6 (02.02.2026)|cffffffff
-[+] - Vollständige Lokalisierung: komplette Übersetzung der Benutzeroberfläche für alle 9 unterstützten Sprachen
-[+] - Änderungsprotokoll jetzt in alle unterstützten Sprachen übersetzt
-[+] - README-Dokumentation hinzugefügt
+|rVersion 1.3.7 (02.02.2026)|cffffffff
+[*] - Klassenfarben stimmen jetzt exakt mit den Spielstandards überein (DBFBlackbull)
+[*] - Flüster-Makros (/w Name Nachricht) senden jetzt korrekt (Kirchlive)
 
-Version 1.3.5b (02.02.2026)|cffffffff
-[*] - WHO-Abklingzeit: 30s für Turtle WoW, 5s für Vanilla
+|rVersion 1.3.6 (02.02.2026)|cffffffff
+[+] - Vollständige Übersetzung der Benutzeroberfläche für alle 9 unterstützten Sprachen
 
-Version 1.3.5a (02.02.2026)|cffffffff
-[*] - Option "Niedrigstufige blockieren" wieder aktiviert (funktioniert mit fraktionsübergreifend)
+|rVersion 1.3.5 (29.12.2025)|cffffffff
+[+] - Nachrichten erscheinen jetzt sofort; Spielerinfo wird im Hintergrund geladen (me0wg4ming)
+[+] - GM-Flüstern wird jetzt hervorgehoben (me0wg4ming)
 
-Version 1.3.5 (29.12.2025)|cffffffff
-[+] - WHO-Info wird jetzt asynchron geladen (Nachrichten werden sofort angezeigt)
-[+] - Round-Robin WHO-Warteschlange für faire Verteilung über Flüsterfenster
-[+] - Spieler werden nach 5 fehlgeschlagenen Versuchen automatisch aus der WHO-Warteschlange entfernt
-[+] - GM-Flüster-Erkennung und -Markierung (Turtle WoW)
-[+] - Befehl /wimdebug zum Debuggen des WHO-Systems hinzugefügt
-[*] - WHO-Abklingzeit auf 30s für Turtle WoW-Kompatibilität erhöht
-
-Version 1.3.4 (28.07.2025)|cffffffff
+|rVersion 1.3.4 (28.07.2025)|cffffffff
 [*] - Anzeige kyrillischer Zeichen behoben
-[+] - Änderungen von KasVital übernommen
+[+] - Lokalisierungs- und UI-Verbesserungen (KasVital)
 
-Version 1.3.3 (27.12.2017)|cffffffff
+|rVersion 1.3.3 (27.12.2017)|cffffffff
 [+] - Refaktorisierung durch shirsig
 
-Version 1.3.2 (05.01.2017)|cffffffff
+|rVersion 1.3.2 (05.01.2017)|cffffffff
 [+] - Übersetzung ins Russische (ruRU)
 
-Version 1.3.1 (17.10.2006)|cffffffff
+|rVersion 1.3.1 (17.10.2006)|cffffffff
 [+] - Neues Minimap-Symbol-Menü erstellt. Blizzards Drop-Down-Menü wird nicht mehr verwendet.
 [+] - Gespräche können jetzt über das Minimap-Symbol-Menü geschlossen werden.
 [*] - Erforderliche Codeänderungen für Titan-Plugin und neues Minimap-Symbol-Menü vorgenommen.
