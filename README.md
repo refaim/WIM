@@ -7,25 +7,11 @@ WIM provides a dedicated chat window for each person you whisper with, keeping y
 ## Features
 
 - **Individual Chat Windows**: Each whisper conversation gets its own resizable window
-- **Character Information**: Display player details (guild, level, race, class) via background /who queries
-- **Class Icons and Colors**: Visual indicators for player classes in the title bar
-- **Message History**: Record and browse past conversations with the built-in history viewer
-- **Alias System**: Assign nicknames to players for easier identification
-- **Message Filtering**: Block unwanted messages by keywords/phrases
-- **Shortcut Bar**: Quick access to common actions (inspect, trade, invite, target)
-- **Timestamps**: Optional timestamps on all messages
-- **Window Cascading**: New windows automatically cascade to avoid overlap
-- **Minimap Button**: Access conversations and options from a freely movable minimap icon
-- **Titan Panel Integration**: Built-in support for Titan Panel
-- **URL Detection**: Clickable web addresses in messages
-- **GM Detection**: Whispers from Game Masters are flagged with a special icon and `<GM>` tag
-- **Block Low Level**: Option to block whispers from players below level 10 (excludes friends, guild members, and players you've whispered)
-- **Multi-Language Support**: Available in 9 languages (English, German, Spanish, French, Korean, Portuguese, Russian, Simplified Chinese, Traditional Chinese)
-
-### Turtle WoW Features
-
-- **Cross-Faction Whispers**: Full support for Turtle WoW's cross-faction communication
-- **Optimized WHO Cooldown**: Respects Turtle WoW's 30-second WHO cooldown (5 seconds on vanilla)
+- **Character Information**: Player details (guild, level, race, class) with class-colored title bars
+- **Message History**: Browse past conversations with the built-in history viewer
+- **Aliases and Filtering**: Nicknames for players and keyword-based message blocking
+- **GM Detection**: Whispers from Game Masters are flagged with a special icon
+- **Multi-Language Support**: 9 languages (English, German, Spanish, French, Korean, Portuguese, Russian, Simplified Chinese, Traditional Chinese)
 
 ## Usage
 
@@ -69,13 +55,13 @@ Check your Key Bindings screen (Escape > Key Bindings) for WIM's available actio
 ## Acknowledgments
 
 ### Original Author
-- **Pazza** (Bronzebeard) - Original WIM creator
+- **[Pazza](https://www.curseforge.com/members/realpazza/projects)** (Bronzebeard) - Original WIM creator
 
 ### Concept
 - **Sloans** (Bronzebeard) - Original concept and ideas
 
 ### Contributors
-- **[shirsig](https://github.com/shirsig)** - Major refactoring, WHO system improvements, block low level feature, /r hotkey fix, whisper autocompletion
+- **[shirsig](https://github.com/shirsig)** - Major refactoring, WHO system improvements, /r hotkey fix, whisper autocompletion
 - **[KasVital](https://github.com/KasVital)** - Vanilla compatibility fixes, Cyrillic character support
 - **[me0wg4ming](https://github.com/me0wg4ming)** - Async WHO loading, GM detection, Turtle WoW optimizations
 - **[Refaim](https://github.com/refaim)** - Current maintainer, localization system, code cleanup
