@@ -934,7 +934,6 @@ function WIM_Icon_AddUser(theUser)
 	info.value = WIM_Windows[theUser].frame
 	info.func = WIM_Icon_PlayerClick
 	WIM_IconItems[theUser] = info
-	table.sort(WIM_IconItems)
 	WIM_Icon_DropDown_Update()
 end
 
