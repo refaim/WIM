@@ -156,6 +156,7 @@ WIM_L_TRADE="Comerciar";
 WIM_L_INVITE="Invitar";
 WIM_L_TARGET="Seleccionar";
 WIM_L_GAMEMASTER="Maestro de juego";
+WIM_L_DATE_FORMAT="%d/%m/%y";
 WIM_L_NEWMESSAGE="¡Nuevo mensaje!";
 WIM_L_CONVCLOSED="Conversación cerrada.";
 WIM_L_PURGEDMESSAGES="[WIM]: Se eliminaron %d mensajes obsoletos del historial.";

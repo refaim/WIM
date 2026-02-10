@@ -156,6 +156,7 @@ WIM_L_TRADE="Trade";
 WIM_L_INVITE="Invite";
 WIM_L_TARGET="Target";
 WIM_L_GAMEMASTER="Game Master";
+WIM_L_DATE_FORMAT="%m/%d/%y";
 WIM_L_NEWMESSAGE="New message!";
 WIM_L_CONVCLOSED="Conversation closed.";
 WIM_L_PURGEDMESSAGES="[WIM]: Purged %d out-dated messages from history.";

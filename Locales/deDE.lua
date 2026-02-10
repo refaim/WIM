@@ -156,6 +156,7 @@ WIM_L_TRADE="Handeln";
 WIM_L_INVITE="Einladen";
 WIM_L_TARGET="Ziel auswählen";
 WIM_L_GAMEMASTER="Spielleiter";
+WIM_L_DATE_FORMAT="%d.%m.%y";
 WIM_L_NEWMESSAGE="Neue Nachricht!";
 WIM_L_CONVCLOSED="Unterhaltung geschlossen.";
 WIM_L_PURGEDMESSAGES="[WIM]: %d veraltete Nachrichten aus dem Verlauf gelöscht.";

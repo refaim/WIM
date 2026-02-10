@@ -1262,7 +1262,7 @@ function WIM_AddToHistory(theUser, userFrom, theMessage, isMsgIn)
 		if(WIM_CanRecordUser(theUser)) then --[if record user
 			getglobal(WIM_Windows[theUser].frame.."HistoryButton"):Show();
 			tmpEntry["stamp"] = time();
-			tmpEntry["date"] = date("%m/%d/%y");
+			tmpEntry["date"] = date(WIM_L_DATE_FORMAT);
 			tmpEntry["time"] = date("%H:%M");
 			tmpEntry["msg"] = WIM_ConvertURLtoLinks(theMessage);
 			tmpEntry["from"] = userFrom;

@@ -156,6 +156,7 @@ WIM_L_TRADE="交易";
 WIM_L_INVITE="邀請";
 WIM_L_TARGET="選擇目標";
 WIM_L_GAMEMASTER="遊戲管理員";
+WIM_L_DATE_FORMAT="%y/%m/%d";
 WIM_L_NEWMESSAGE="新訊息！";
 WIM_L_CONVCLOSED="對話已結束。";
 WIM_L_PURGEDMESSAGES="[WIM]: 已從歷史中刪除 %d 則過期訊息。";

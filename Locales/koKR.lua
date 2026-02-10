@@ -156,6 +156,7 @@ WIM_L_TRADE="거래";
 WIM_L_INVITE="초대";
 WIM_L_TARGET="대상 지정";
 WIM_L_GAMEMASTER="게임 마스터";
+WIM_L_DATE_FORMAT="%y/%m/%d";
 WIM_L_NEWMESSAGE="새 메시지!";
 WIM_L_CONVCLOSED="대화가 종료되었습니다.";
 WIM_L_PURGEDMESSAGES="[WIM]: 기록에서 오래된 메시지 %d개를 삭제했습니다.";

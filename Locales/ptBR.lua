@@ -156,6 +156,7 @@ WIM_L_TRADE="Trocar";
 WIM_L_INVITE="Convidar";
 WIM_L_TARGET="Selecionar";
 WIM_L_GAMEMASTER="Mestre de Jogo";
+WIM_L_DATE_FORMAT="%d/%m/%y";
 WIM_L_NEWMESSAGE="Nova mensagem!";
 WIM_L_CONVCLOSED="Conversa encerrada.";
 WIM_L_PURGEDMESSAGES="[WIM]: Removidas %d mensagens desatualizadas do histórico.";
