@@ -4,7 +4,7 @@ WIM_HistoryView_Name_Selected = "";
 WIM_HistoryView_Filter_Selected = "";
 
 function WIM_HistoryView_NameClick()
-	if(WIM_HistoryView_Name_Selected ~= this.Name) then
+	if(WIM_HistoryView_Name_Selected ~= this.theName) then
 		WIM_HistoryView_Filter_Selected = "";
 	end
 	WIM_HistoryView_Name_Selected = this.theName;
