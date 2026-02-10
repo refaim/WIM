@@ -161,7 +161,7 @@ WIM_L_PURGEDMESSAGES="[WIM]: %d veraltete Nachrichten aus dem Verlauf gelöscht.
 --wim_titan.lua
 WIM_L_MESSAGES="Nachrichten: ";
 --wim.xml
-WIM_L_XTOOLTIP="Shift &amp; Linksklick, um Unterhaltung zu beenden.";
+WIM_L_XTOOLTIP="Shift & Linksklick, um Unterhaltung zu beenden.";
 WIM_L_HISTORYTOOLTIP="Klicken, um Nachrichtenverlauf anzuzeigen.";
 WIM_L_RUSUREYOUWANTIGNORE="Sind Sie sicher, dass Sie\ndiesen Benutzer ignorieren möchten?";
 

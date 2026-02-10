@@ -161,7 +161,7 @@ WIM_L_PURGEDMESSAGES="[WIM]: 已從歷史中刪除 %d 則過期訊息。";
 --wim_titan.lua
 WIM_L_MESSAGES="訊息: ";
 --wim.xml
-WIM_L_XTOOLTIP="Shift &amp; 左鍵點擊結束對話。";
+WIM_L_XTOOLTIP="Shift & 左鍵點擊結束對話。";
 WIM_L_HISTORYTOOLTIP="點擊檢視訊息歷史。";
 WIM_L_RUSUREYOUWANTIGNORE="你確定要忽略\n這位使用者嗎？";
 

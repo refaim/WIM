@@ -161,7 +161,7 @@ WIM_L_PURGEDMESSAGES="[WIM]: Purged %d out-dated messages from history.";
 --wim_titan.lua
 WIM_L_MESSAGES="Messages: ";
 --wim.xml
-WIM_L_XTOOLTIP="Shift &amp; Left-Click to end conversation.";
+WIM_L_XTOOLTIP="Shift & Left-Click to end conversation.";
 WIM_L_HISTORYTOOLTIP="Click to view message history.";
 WIM_L_RUSUREYOUWANTIGNORE="Are you sure you want to\nignore this user?";
 --//CFM

@@ -161,7 +161,7 @@ WIM_L_PURGEDMESSAGES="[WIM]: Removidas %d mensagens desatualizadas do histórico
 --wim_titan.lua
 WIM_L_MESSAGES="Mensagens: ";
 --wim.xml
-WIM_L_XTOOLTIP="Shift &amp; Clique esquerdo para encerrar conversa.";
+WIM_L_XTOOLTIP="Shift & Clique esquerdo para encerrar conversa.";
 WIM_L_HISTORYTOOLTIP="Clique para ver o histórico de mensagens.";
 WIM_L_RUSUREYOUWANTIGNORE="Tem certeza de que deseja\nignorar este usuário?";
 

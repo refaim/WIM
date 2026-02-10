@@ -161,7 +161,7 @@ WIM_L_PURGEDMESSAGES="[WIM]: 기록에서 오래된 메시지 %d개를 삭제했
 --wim_titan.lua
 WIM_L_MESSAGES="메시지: ";
 --wim.xml
-WIM_L_XTOOLTIP="Shift &amp; 왼쪽 클릭으로 대화 종료.";
+WIM_L_XTOOLTIP="Shift & 왼쪽 클릭으로 대화 종료.";
 WIM_L_HISTORYTOOLTIP="클릭하여 메시지 기록 보기.";
 WIM_L_RUSUREYOUWANTIGNORE="이 사용자를 정말로\n무시하시겠습니까?";
 
