@@ -668,10 +668,10 @@ function WIM_PostMessage(user, msg, ttype, from, raw_msg, hotkeyFix)
 	end
 
 	if hotkeyFix then
-		local orig = getglobal(f:GetName()..'MsgBox'):GetScript('OnChar')
-		getglobal(f:GetName()..'MsgBox'):SetScript('OnChar', function()
-			getglobal(f:GetName()..'MsgBox'):SetText('')
-			getglobal(f:GetName()..'MsgBox'):SetScript('OnChar', orig)
+		local msgBox = getglobal(f:GetName()..'MsgBox')
+		msgBox:SetScript('OnUpdate', function()
+			this:SetText('')
+			this:SetScript('OnUpdate', nil)
 		end)
 	end
 end
