@@ -77,7 +77,6 @@ function WIM_HookInspect()
 		WIM_InspectIsHooked = true;
 	end
 	
-	DEFAULT_CHAT_FRAME:AddMessage("Hooking Complete.");
 end
 
 function WIM_AtlasLootItem_OnClick(arg1)
@@ -214,7 +213,6 @@ end
 -- copy of Lootlink's local function - modified
 function WIM_LootLink_GetHyperlink(name)
 	local itemLink = ItemLinks[name];
-	DEFAULT_CHAT_FRAME:AddMessage("LootLink_GetHyperlink: "..name);
 	if( itemLink and itemLink.i ) then
 		-- Remove instance-specific data that we captured from the link we return
 		local item = string.gsub(itemLink.i, "(%d+):(%d+):(%d+):(%d+)", "%1:0:%3:%4");
