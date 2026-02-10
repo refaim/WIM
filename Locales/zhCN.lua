@@ -112,8 +112,6 @@ WIM_L_DESCRIPTION=" 描述 ";
 WIM_L_VERSIONHISTORY=" 版本历史 ";
 WIM_L_DIDYOUKNOW=" 你知道吗？ ";
 WIM_L_CREDITS=" 致谢 ";
-WIM_L_BLOCKLEVEL="屏蔽10级以下玩家的密语。";
-WIM_L_BLOCKLVL="WIM不会显示10级以下玩家的密语，除非他们是好友、公会成员或你在本次会话中主动密语过的玩家。";
 --options.lua
 WIM_L_ICONPOSIT="图标位置";
 WIM_L_FONTSIZE="字体大小";

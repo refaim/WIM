@@ -113,8 +113,6 @@ WIM_L_DESCRIPTION = " Описание "
 WIM_L_VERSIONHISTORY = " История версий "
 WIM_L_DIDYOUKNOW = " А вы знали? "
 WIM_L_CREDITS = " Благодарности "
-WIM_L_BLOCKLEVEL = "Блокировать шёпот от игроков ниже 10 уровня"
-WIM_L_BLOCKLVL = "WIM не будет показывать шёпот от игроков ниже 10 уровня, кроме друзей, согильдейцев и тех, кому вы сами писали в этой сессии."
 
 -- WIM_Options.lua
 WIM_L_ICONPOSIT = "Позиция иконки"

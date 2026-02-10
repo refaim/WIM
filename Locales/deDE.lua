@@ -112,8 +112,6 @@ WIM_L_DESCRIPTION=" Beschreibung ";
 WIM_L_VERSIONHISTORY=" Versionsverlauf ";
 WIM_L_DIDYOUKNOW=" Wussten Sie? ";
 WIM_L_CREDITS=" Credits ";
-WIM_L_BLOCKLEVEL="Flüstern von Spielern unter Stufe 10 blockieren.";
-WIM_L_BLOCKLVL="WIM zeigt keine Flüstern von Spielern unter Stufe 10 an, außer von Freunden, Gildenmitgliedern oder Spielern, denen Sie in dieser Sitzung selbst geflüstert haben.";
 --options.lua
 WIM_L_ICONPOSIT="Symbolposition";
 WIM_L_FONTSIZE="Schriftgröße";

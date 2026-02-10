@@ -112,8 +112,6 @@ WIM_L_DESCRIPTION=" Description ";
 WIM_L_VERSIONHISTORY=" Historique des versions ";
 WIM_L_DIDYOUKNOW=" Le saviez-vous? ";
 WIM_L_CREDITS=" Crédits ";
-WIM_L_BLOCKLEVEL="Bloquer les chuchotements des joueurs sous le niveau 10.";
-WIM_L_BLOCKLVL="WIM n'affichera pas les chuchotements des joueurs sous le niveau 10, sauf s'ils sont amis, membres de guilde ou si vous leur avez chuchoté dans cette session.";
 --options.lua
 WIM_L_ICONPOSIT="Position de l'icône";
 WIM_L_FONTSIZE="Taille de police";

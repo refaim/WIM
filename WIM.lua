@@ -168,7 +168,6 @@ WIM_Data_DEFAULTS = {
 	showAFK = true,
 	useEscape = true,
 	hookWispParse = true,
-	blockLowLevel = false,
 };
 --[initialize defualt values
 WIM_Data = WIM_Data_DEFAULTS;
@@ -216,6 +215,10 @@ function WIM_OnLoad()
 end
 
 
+function WIM_VersionToNumber(ver)
+	return tonumber(string.gsub(ver, "%D", "")) or 0
+end
+
 function WIM_Incoming(event)
 	--[Events
 	if(event == "VARIABLES_LOADED") then
@@ -259,7 +262,6 @@ function WIM_Incoming(event)
 		if(WIM_Filters == nil) then
 			WIM_LoadDefaultFilters();
 		end
-		
 		ShowFriends(); --[update friend list
 		if(IsInGuild()) then GuildRoster(); end; --[update guild roster
 		
@@ -271,7 +273,18 @@ function WIM_Incoming(event)
 		
 		WIM_SetWIM_Enabled(WIM_Data.enableWIM);
 		
-		if(WIM_VERSION ~= WIM_Data.versionLastLoaded) then
+		if WIM_VERSION ~= WIM_Data.versionLastLoaded then
+			-- v1.3.8: remove outdated spam filters from SavedVariables
+			if WIM_VersionToNumber(WIM_Data.versionLastLoaded) <= WIM_VersionToNumber("1.3.7") then
+				local outdatedFilters = {
+					"^<GA", "USD", "W@W", "C@M", "G4", "G=", ">>", ">>>",
+					"OKO", "GAMES", "NOST", "DOLLARS", "CQM", "SERVICE",
+					"CHEAP", "WWW", "1-60",
+				}
+				for _, key in ipairs(outdatedFilters) do
+					WIM_Filters[key] = nil
+				end
+			end
 			WIM_Help:Show();
 		end
 		WIM_Data.versionLastLoaded = WIM_VERSION;
@@ -1329,6 +1342,7 @@ end
 
 function WIM_LoadDefaultFilters()
 	WIM_Filters = {};
+	-- Boss mod addon communication (hide from WIM, pass to chat)
 	WIM_Filters["^LVBM"] 					= "Ignore";
 	WIM_Filters["^YOU ARE BEING WATCHED!"] 	= "Ignore";
 	WIM_Filters["^YOU ARE MARKED!"] 		= "Ignore";
@@ -1337,25 +1351,7 @@ function WIM_LoadDefaultFilters()
 	WIM_Filters["^YOU ARE BURNING!"] 		= "Ignore";
 	WIM_Filters["^YOU ARE THE BOMB!"] 		= "Ignore";
 	WIM_Filters["VOLATILE INFECTION"] 		= "Ignore";
-	WIM_Filters["^<GA"]						= "Block";
-	WIM_Filters["USD"]						= "Block";
-	WIM_Filters["W@W"]						= "Block";
-	WIM_Filters["C@M"]						= "Block";
-	WIM_Filters["G4"]						= "Block";
-	WIM_Filters["G="]						= "Block";
-	WIM_Filters[">>"]						= "Ignore";
-	WIM_Filters[">>>"]						= "Ignore";
-	WIM_Filters["OKO"]						= "Block";
-	WIM_Filters["GAMES"]					= "Block";
-	WIM_Filters["NOST"]						= "Ignore";
-	WIM_Filters["DOLLARS"]					= "Block";
-	WIM_Filters["CQM"]						= "Block";
-	WIM_Filters["SERVICE"]					= "Ignore";
-	WIM_Filters["CHEAP"]					= "Block";
-	WIM_Filters["WWW"]						= "Block";
-	WIM_Filters["1-60"]						= "Block";
---	WIM_Filters[""]						= "Ignore";
-	
+
 	WIM_FilteringScrollBar_Update();
 end
 

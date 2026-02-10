@@ -112,8 +112,6 @@ WIM_L_DESCRIPTION=" Descripción ";
 WIM_L_VERSIONHISTORY=" Historial de versiones ";
 WIM_L_DIDYOUKNOW=" ¿Sabías que? ";
 WIM_L_CREDITS=" Créditos ";
-WIM_L_BLOCKLEVEL="Bloquear susurros de jugadores bajo nivel 10.";
-WIM_L_BLOCKLVL="WIM no mostrará susurros de jugadores bajo nivel 10, excepto de amigos, miembros de hermandad o jugadores a quienes hayas susurrado en esta sesión.";
 --options.lua
 WIM_L_ICONPOSIT="Posición del icono";
 WIM_L_FONTSIZE="Tamaño de fuente";

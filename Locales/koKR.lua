@@ -112,8 +112,6 @@ WIM_L_DESCRIPTION=" 설명 ";
 WIM_L_VERSIONHISTORY=" 버전 기록 ";
 WIM_L_DIDYOUKNOW=" 알고 계셨나요? ";
 WIM_L_CREDITS=" 크레딧 ";
-WIM_L_BLOCKLEVEL="레벨 10 미만 플레이어의 귓속말 차단.";
-WIM_L_BLOCKLVL="WIM은 레벨 10 미만 플레이어의 귓속말을 표시하지 않습니다. 단, 친구, 길드원 또는 이 세션에서 직접 귓속말을 보낸 플레이어는 제외됩니다.";
 --options.lua
 WIM_L_ICONPOSIT="아이콘 위치";
 WIM_L_FONTSIZE="글꼴 크기";
