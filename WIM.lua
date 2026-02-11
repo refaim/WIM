@@ -216,7 +216,8 @@ end
 
 
 function WIM_VersionToNumber(ver)
-	return tonumber(string.gsub(ver, "%D", "")) or 0
+	local digits = string.gsub(ver, "%D", "")
+	return tonumber(digits) or 0
 end
 
 function WIM_Incoming(event)
