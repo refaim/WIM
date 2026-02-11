@@ -1302,7 +1302,7 @@ function WIM_DisplayHistory(theUser)
 				if WIM_History[theUser][i].isGM then
 					displayName = "<GM>"..displayName;
 				end
-				msg = "|Hplayer:"..WIM_History[theUser][i].from.."|h["..displayName.."]|h: "..WIM_History[theUser][i].msg;
+				local msg = "|Hplayer:"..WIM_History[theUser][i].from.."|h["..displayName.."]|h: "..WIM_History[theUser][i].msg;
 				if(WIM_Data.showTimeStamps) then
 					msg = WIM_History[theUser][i].time.." "..msg;
 				end
