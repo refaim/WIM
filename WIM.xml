@@ -375,8 +375,6 @@
 				</FontString>
 				<Scripts>
 					<OnEnterPressed>
-						local _, tParent = this:GetParent();
-						
 						if(strsub(this:GetText(), 1, 1) == "/") then
 							ChatFrameEditBox:SetText(this:GetText());
 							ChatEdit_SendText(ChatFrameEditBox, 1);
