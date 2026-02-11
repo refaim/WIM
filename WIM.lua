@@ -220,17 +220,21 @@ function WIM_VersionToNumber(ver)
 	return tonumber(digits) or 0
 end
 
+function WIM_DeepMergeDefaults(target, defaults)
+	for key, value in pairs(defaults) do
+		if target[key] == nil then
+			target[key] = value
+		elseif type(value) == "table" and type(target[key]) == "table" then
+			WIM_DeepMergeDefaults(target[key], value)
+		end
+	end
+end
+
 function WIM_Incoming(event)
 	--[Events
 	if(event == "VARIABLES_LOADED") then
-		-- Apply defaults for any missing settings
-		for key, value in pairs(WIM_Data_DEFAULTS) do
-			if WIM_Data[key] == nil then WIM_Data[key] = value end
-		end
-		-- Merge sub-keys for displayColors (in case new color keys were added)
-		for key, value in pairs(WIM_Data_DEFAULTS.displayColors) do
-			if WIM_Data.displayColors[key] == nil then WIM_Data.displayColors[key] = value end
-		end
+		-- Apply defaults for any missing settings (deep merge)
+		WIM_DeepMergeDefaults(WIM_Data, WIM_Data_DEFAULTS)
 		
 		if(WIM_Filters == nil) then
 			WIM_LoadDefaultFilters();
