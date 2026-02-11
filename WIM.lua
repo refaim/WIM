@@ -309,7 +309,13 @@ function WIM_PlayerCacheQueueEmpty()
 	return true
 end
 
-function WIM_Update()
+WIM_Update_Elapsed = 0
+
+function WIM_Update(elapsed)
+	WIM_Update_Elapsed = WIM_Update_Elapsed + elapsed
+	if WIM_Update_Elapsed < 1 then return end
+	WIM_Update_Elapsed = 0
+
 	-- WHO cooldown: 30s for Turtle WoW, 5s for vanilla. GMs skip cooldown but wait for response
 	if not WIM_IsGM then
 		local WHO_COOLDOWN = TURTLE_WOW_VERSION and 30 or 5
