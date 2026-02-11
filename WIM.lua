@@ -1027,8 +1027,12 @@ function WIM_HideAll()
 end
 
 function WIM_CloseAllConvos()
+	local keys = {}
 	for key in WIM_Windows do
-		WIM_CloseConvo(key);
+		tinsert(keys, key)
+	end
+	for _, key in ipairs(keys) do
+		WIM_CloseConvo(key)
 	end
 end
 
@@ -1358,7 +1362,11 @@ function WIM_HistoryPurge()
 	if(WIM_Data.historySettings.autoDelete.enabled) then
 		local delCount = 0;
 		local eldestTime = time() - (60 * 60 * 24 * WIM_Data.historySettings.autoDelete.days);
+		local keys = {}
 		for key in WIM_History do
+			tinsert(keys, key)
+		end
+		for _, key in ipairs(keys) do
 			if(WIM_History[key][1]) then
 				while(WIM_History[key][1].stamp < eldestTime) do
 					table.remove(WIM_History[key], 1);
