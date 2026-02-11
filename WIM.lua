@@ -380,8 +380,9 @@ function WIM_WhoInfo(name, callback)
 		callback(WIM_PlayerCache[name])
 	else
 		WIM_DebugMsg("|cffffff00[WIM WHO]|r Adding " .. name .. " to queue")
-		WIM_PlayerCacheQueue[name] = WIM_PlayerCacheQueue[name] or { callbacks = {} }
-		WIM_PlayerCacheQueue[name].attempts = 0
+		if not WIM_PlayerCacheQueue[name] then
+			WIM_PlayerCacheQueue[name] = { callbacks = {}, attempts = 0 }
+		end
 		tinsert(WIM_PlayerCacheQueue[name].callbacks, callback)
 	end
 end
