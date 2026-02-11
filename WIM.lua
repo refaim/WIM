@@ -1294,7 +1294,7 @@ end
 function WIM_DisplayHistory(theUser)
 	if(WIM_History[theUser] and WIM_Data.enableHistory and WIM_Data.historySettings.popWin.enabled) then
 		table.sort(WIM_History[theUser], WIM_SortHistory);
-		for i=table.getn(WIM_History[theUser])-WIM_Data.historySettings.popWin.count-1, table.getn(WIM_History[theUser]) do 
+		for i=getn(WIM_History[theUser])-WIM_Data.historySettings.popWin.count+1, getn(WIM_History[theUser]) do
 			if(WIM_History[theUser][i]) then
 				-- Include <GM> tag if sender was GM
 				local displayName = WIM_GetAlias(WIM_History[theUser][i].from, true);
