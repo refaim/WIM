@@ -141,9 +141,10 @@ function WIM_HookTradeSkill()
 		WIM_TradeSkillSkillIcon_OnClick_orig = TradeSkillSkillIcon:GetScript("OnClick");
 		TradeSkillSkillIcon:SetScript("OnClick", function() WIM_TradeSkillSkillIcon_OnClick_orig(); WIM_TradeSkillSkillIcon_OnClick(); end);
 		
-		for i=1, 8 do 
-			WIM_TradeSkillReagent_OnClick_orig = getglobal("TradeSkillReagent"..i):GetScript("OnClick");
-			getglobal("TradeSkillReagent"..i):SetScript("OnClick", function() WIM_TradeSkillReagent_OnClick_orig(); WIM_TradeSkillReagent_OnClick(); end);
+		WIM_TradeSkillReagent_OnClick_orig = getglobal("TradeSkillReagent1"):GetScript("OnClick");
+		for i=1, 8 do
+			local orig = getglobal("TradeSkillReagent"..i):GetScript("OnClick");
+			getglobal("TradeSkillReagent"..i):SetScript("OnClick", function() orig(); WIM_TradeSkillReagent_OnClick(); end);
 		end
 		WIM_TradeSkillIsHooked = true;
 	end
@@ -152,9 +153,10 @@ function WIM_HookTradeSkill()
 		WIM_CraftIcon_OnClick_orig = CraftIcon:GetScript("OnClick");
 		CraftIcon:SetScript("OnClick", function() WIM_CraftIcon_OnClick_orig(); WIM_CraftIcon_OnClick(); end);
 		
-		for i=1, 8 do 
-			WIM_CraftReagent_OnClick_orig = getglobal("CraftReagent"..i):GetScript("OnClick");
-			getglobal("CraftReagent"..i):SetScript("OnClick", function() WIM_CraftReagent_OnClick_orig(); WIM_CraftReagent_OnClick(); end);
+		WIM_CraftReagent_OnClick_orig = getglobal("CraftReagent1"):GetScript("OnClick");
+		for i=1, 8 do
+			local orig = getglobal("CraftReagent"..i):GetScript("OnClick");
+			getglobal("CraftReagent"..i):SetScript("OnClick", function() orig(); WIM_CraftReagent_OnClick(); end);
 		end
 		
 		WIM_CraftSkillIsHooked = true;
