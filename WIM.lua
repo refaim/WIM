@@ -83,6 +83,18 @@ WIM_RecentList = {}; --[Not saved between sessions: Store's list of recent conve
 	
 WIM_History = {};
 
+function WIM_DeepCopy(t)
+	local copy = {}
+	for key, value in pairs(t) do
+		if type(value) == "table" then
+			copy[key] = WIM_DeepCopy(value)
+		else
+			copy[key] = value
+		end
+	end
+	return copy
+end
+
 WIM_Data_DEFAULTS = {
 	versionLastLoaded = "",
 	showChangeLogOnNewVersion = true,
@@ -171,7 +183,7 @@ WIM_Data_DEFAULTS = {
 	hookWispParse = true,
 };
 --[initialize defualt values
-WIM_Data = WIM_Data_DEFAULTS;
+WIM_Data = WIM_DeepCopy(WIM_Data_DEFAULTS);
 
 WIM_CascadeDirection = {
 	up = {
@@ -224,7 +236,11 @@ end
 function WIM_DeepMergeDefaults(target, defaults)
 	for key, value in pairs(defaults) do
 		if target[key] == nil then
-			target[key] = value
+			if type(value) == "table" then
+				target[key] = WIM_DeepCopy(value)
+			else
+				target[key] = value
+			end
 		elseif type(value) == "table" and type(target[key]) == "table" then
 			WIM_DeepMergeDefaults(target[key], value)
 		end
@@ -747,7 +763,7 @@ function WIM_SlashCommand(msg)
 	if(msg == "" or msg == nil) then
 		WIM_Options:Show();
 	elseif(msg == "reset") then
-		WIM_Data = WIM_Data_DEFAULTS;
+		WIM_Data = WIM_DeepCopy(WIM_Data_DEFAULTS);
 	elseif(msg == "clear history") then
 		WIM_History = {};
 	elseif(msg == "reset filters") then
