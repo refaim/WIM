@@ -1074,7 +1074,7 @@ function WIM_InitClassProps()
 end
 
 function WIM_UserWithClassColor(theUser)
-	if(WIM_PlayerCache[theUser].class == "") then
+	if not WIM_PlayerCache[theUser] or WIM_PlayerCache[theUser].class == "" then
 		return theUser;
 	else
 		if(WIM_ClassColors[WIM_PlayerCache[theUser].class]) then
