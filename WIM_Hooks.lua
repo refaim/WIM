@@ -383,10 +383,14 @@ function WIM_SetUpHooks()
 
 							for i=1,GetNumFriends() do
 								tryCompleting(GetFriendInfo(i) or '')
+								if supress then break end
 							end
 
-							for i=1,GetNumGuildMembers(true) do
-								tryCompleting(GetGuildRosterInfo(i) or '')
+							if not supress then
+								for i=1,GetNumGuildMembers(true) do
+									tryCompleting(GetGuildRosterInfo(i) or '')
+									if supress then break end
+								end
 							end
 
 							break
