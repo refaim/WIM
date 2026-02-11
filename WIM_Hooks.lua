@@ -11,6 +11,9 @@ function WIM_FriendsFrame_SendMessage()
 end
 
 function WIM_ChatEdit_ParseText(editBox, send)
+	if not WIM_Data.hookWispParse then
+		return WIM_ChatEdit_ParseText_orig(editBox, send)
+	end
 
 	local target
 	local msgText = ''
