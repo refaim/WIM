@@ -868,11 +868,6 @@ function WIM_Icon_DropDown_Update()
 	WIM_NewMessageCount = 0;
 	
 	if tCount == 0 then
-		info = {}
-		info.justifyH = "LEFT"
-		info.text = "WIM_L_NONE"
-		info.notClickable = 1
-		info.notCheckable = 1
 		getglobal("WIM_ConversationMenuTellButton1Close"):Hide()
 		getglobal("WIM_ConversationMenuTellButton1"):Disable()
 		getglobal("WIM_ConversationMenuTellButton1"):SetText(WIM_L_NONEC)
