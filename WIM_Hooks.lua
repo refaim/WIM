@@ -268,8 +268,6 @@ end
 
 function WIM_FriendsFrame_OnEvent()
     if event == 'WHO_LIST_UPDATE' then
-    	WIM_LastWhoListUpdate = GetTime()
-
     	if WIM_WhoScanInProgress then
 			local numResults = GetNumWhoResults()
 			if WIM_Debug then

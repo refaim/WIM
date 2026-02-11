@@ -14,6 +14,7 @@ WIM_PlayerCache = {}
 WIM_PlayerCacheQueue = {}
 WIM_WhisperedTo = {}
 WIM_LastWhoSent = nil
+WIM_WhoScanInProgress = false
 WIM_IsGM = false
 WIM_Debug = false
 
