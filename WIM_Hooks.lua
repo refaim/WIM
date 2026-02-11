@@ -462,15 +462,15 @@ function WIM_SetUpHooks()
 	end;
 	
 	if (AllInOneInventoryFrameItemButton_OnClick) then
-		--Hook ContainerFrameItemButton_OnClick
 		WIM_AllInOneInventoryFrameItemButton_OnClick_orig = AllInOneInventoryFrameItemButton_OnClick;
-		AllInOneInventoryFrameItemButton_OnClick = function(button, ignoreModifiers) WIM_AllInOneInventoryFrameItemButton_OnClick_orig(button, ignoreModifiers); WIM_ItemButton_OnClick(button, ignoreModifiers); end;
+		AllInOneInventoryFrameItemButton_OnClick = WIM_AllInOneInventoryFrameItemButton_OnClick;
+		WIM_AllInOneIsHooked = true;
 	end
-	
+
 	if (EngInventory_ItemButton_OnClick) then
-		--Hook ContainerFrameItemButton_OnClick
 		WIM_EngInventory_ItemButton_OnClick_orig = EngInventory_ItemButton_OnClick;
-		EngInventory_ItemButton_OnClick = function(button, ignoreModifiers) WIM_EngInventory_ItemButton_OnClick_orig(button, ignoreModifiers); WIM_ItemButton_OnClick(button, ignoreModifiers); end;
+		EngInventory_ItemButton_OnClick = WIM_EngInventory_ItemButton_OnClick;
+		WIM_EngInventoryIsHooked = true;
 	end
 	
 	if (BrowseButton) then
@@ -528,12 +528,14 @@ function WIM_AddonDetectToHook(theAddon)
 	elseif(theAddon == "AtlasLoot") then
 		WIM_AtlasLootItem_OnClick_orig = AtlasLootItem_OnClick;
 		AtlasLootItem_OnClick = WIM_AtlasLootItem_OnClick;
-	elseif(theAddon == "AllInOneInventory") then
+	elseif(theAddon == "AllInOneInventory" and not WIM_AllInOneIsHooked) then
 		WIM_AllInOneInventoryFrameItemButton_OnClick_orig = AllInOneInventoryFrameItemButton_OnClick;
 		AllInOneInventoryFrameItemButton_OnClick = WIM_AllInOneInventoryFrameItemButton_OnClick;
-	elseif(theAddon == "EngInventory") then
+		WIM_AllInOneIsHooked = true;
+	elseif(theAddon == "EngInventory" and not WIM_EngInventoryIsHooked) then
 		WIM_EngInventory_ItemButton_OnClick_orig = EngInventory_ItemButton_OnClick;
 		EngInventory_ItemButton_OnClick = WIM_EngInventory_ItemButton_OnClick;
+		WIM_EngInventoryIsHooked = true;
 	elseif(theAddon == "LootLink") then
 		WIM_LootLinkItemButton_OnClick_orig = LootLinkItemButton_OnClick;
 		LootLinkItemButton_OnClick = WIM_LootLinkItemButton_OnClick;
