@@ -576,6 +576,7 @@
 			</OnDragStop>
 			<OnShow>
 				local user = this.theUser;
+				if not WIM_Windows[user] then return end
 				WIM_Windows[user].newMSG = false;
 				WIM_Windows[user].is_visible = true;
 				if(WIM_Data.autoFocus == true) then
@@ -587,6 +588,7 @@
 			<OnHide>
 				getglobal(this:GetName().."IgnoreConfirm"):Hide();
 				local user = this.theUser;
+				if not WIM_Windows[user] then return end
 				WIM_Windows[user].is_visible = false;
 				WIM_Windows[user].newMSG = false;
 				if WIM_EditBoxInFocus == getglobal(this:GetName().."MsgBox") then
