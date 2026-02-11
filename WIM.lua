@@ -884,7 +884,7 @@ function WIM_Icon_DropDown_Update()
 		WIM_NewMessageFlag = false
 		for i=1,table.getn(tList) do
 			if WIM_Windows[tList[i]].newMSG and WIM_Windows[tList[i]].is_visible == false then
-				WIM_IconItems[tList[i]].color = "|cff"..WIM_RGBtoHex(77/255, 135/233, 224/255)
+				WIM_IconItems[tList[i]].color = "|cff"..WIM_RGBtoHex(77/255, 147/255, 224/255)
 				WIM_NewMessageFlag = true
 				WIM_NewMessageCount = WIM_NewMessageCount + 1
 			else
