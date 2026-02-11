@@ -1,6 +1,17 @@
 if GetLocale() ~= "deDE" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersion 1.3.9 (11.02.2026)|cffffffff
+[*] - Absturz beim Einloggen behoben
+[*] - Verlaufs-Popup zeigt jetzt die korrekte Anzahl an Nachrichten
+[*] - /who wird nicht mehr unnötig von WIM abgefangen
+[*] - Neue Standardeinstellungen werden beim Update von einer älteren Version korrekt übernommen
+[*] - Shift+Klick auf leere Ausrüstungs- und Inventar-Slots behoben
+[*] - Shift+Klick auf Reagenzien in Berufs- und Handwerksfenstern verlinkt jetzt den richtigen Gegenstand
+[*] - Gegenstandsklicks mit AllInOneInventory oder EngInventory werden nicht mehr doppelt verarbeitet
+[*] - Flüster-Autovervollständigung schlägt jetzt korrekt den ersten Treffer vor
+[*] - Mögliche Fehler beim Schließen von Fenstern über Escape oder andere Addons behoben
+
 |rVersion 1.3.8 (11.02.2026)|cffffffff
 [*] - Shift+Klick im Questlog verlinkt jetzt Quests und ihre Belohnungen in WIM-Fenster
 [*] - Chat-Antwort-Taste erfordert nicht mehr doppeltes Drücken zum Fokussieren

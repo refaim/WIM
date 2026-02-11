@@ -1,4 +1,4 @@
-WIM_VERSION = "1.3.8";
+WIM_VERSION = "1.3.9";
 
 WIM_Windows = {};
 WIM_EditBoxInFocus = nil;

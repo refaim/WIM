@@ -1,4 +1,15 @@
 WIM_CHANGE_LOG = [[
+|rVersion 1.3.9 (02-11-2026)|cffffffff
+[*] - Fixed a crash that could occur on login
+[*] - History popup now shows the correct number of messages
+[*] - Using /who manually no longer gets intercepted by WIM
+[*] - New default settings now apply correctly when updating from an older version
+[*] - Fixed shift+click on empty equipment and inventory slots
+[*] - Fixed shift+click on reagents in TradeSkill and Craft windows sometimes linking the wrong item
+[*] - Fixed item clicks being processed twice with AllInOneInventory or EngInventory addons
+[*] - Whisper name autocomplete now correctly suggests the first matching name
+[*] - Fixed potential errors when closing windows via Escape or other addons
+
 |rVersion 1.3.8 (02-11-2026)|cffffffff
 [*] - Shift+click in the Quest Log now links quests and their rewards into WIM windows
 [*] - Chat Reply keybinding no longer requires pressing twice to focus

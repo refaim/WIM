@@ -1,6 +1,17 @@
 if GetLocale() ~= "esES" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersión 1.3.9 (11/02/2026)|cffffffff
+[*] - Corregido error que podía ocurrir al iniciar sesión
+[*] - El popup de historial ahora muestra la cantidad correcta de mensajes
+[*] - El comando /who ya no es interceptado innecesariamente por WIM
+[*] - Las nuevas configuraciones predeterminadas ahora se aplican correctamente al actualizar desde una versión anterior
+[*] - Corregido shift+clic en ranuras vacías de equipo e inventario
+[*] - Corregido shift+clic en reagentes de ventanas de profesión que podía enlazar el objeto incorrecto
+[*] - Los clics en objetos con AllInOneInventory o EngInventory ya no se procesan dos veces
+[*] - El autocompletado de nombres en susurros ahora sugiere correctamente la primera coincidencia
+[*] - Corregidos posibles errores al cerrar ventanas con Escape u otros addons
+
 |rVersión 1.3.8 (11/02/2026)|cffffffff
 [*] - Shift+clic en el Registro de misiones ahora enlaza misiones y sus recompensas en ventanas WIM
 [*] - La tecla de respuesta ya no requiere doble pulsación para enfocar

@@ -1,6 +1,17 @@
 if GetLocale() ~= "frFR" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersion 1.3.9 (11/02/2026)|cffffffff
+[*] - Correction d'un crash pouvant survenir à la connexion
+[*] - Le popup d'historique affiche maintenant le bon nombre de messages
+[*] - La commande /who n'est plus interceptée inutilement par WIM
+[*] - Les nouveaux paramètres par défaut sont maintenant correctement appliqués lors de la mise à jour depuis une ancienne version
+[*] - Correction du shift+clic sur les emplacements vides d'équipement et d'inventaire
+[*] - Correction du shift+clic sur les réactifs dans les fenêtres de métier qui pouvait lier le mauvais objet
+[*] - Les clics sur les objets avec AllInOneInventory ou EngInventory ne sont plus traités deux fois
+[*] - L'auto-complétion des noms en chuchotement suggère maintenant correctement la première correspondance
+[*] - Correction d'erreurs potentielles lors de la fermeture de fenêtres via Échap ou d'autres addons
+
 |rVersion 1.3.8 (11/02/2026)|cffffffff
 [*] - Shift+clic dans le Journal de quêtes insère maintenant les quêtes et leurs récompenses dans les fenêtres WIM
 [*] - La touche de réponse ne nécessite plus un double appui pour le focus
