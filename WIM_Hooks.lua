@@ -93,7 +93,8 @@ end
 function WIM_InspectPaperDollItemSlotButton_OnClick(arg1)
 	if ( IsShiftKeyDown() ) then
 		if ( WIM_EditBoxInFocus ) then
-			WIM_EditBoxInFocus:Insert(GetInventoryItemLink(InspectFrame.unit, this:GetID()));
+			local link = GetInventoryItemLink(InspectFrame.unit, this:GetID())
+			if link then WIM_EditBoxInFocus:Insert(link) end
 		end
 	end
 	WIM_InspectPaperDollItemSlotButton_OnClick_orig(arg1);
@@ -103,7 +104,8 @@ function WIM_AllInOneInventoryFrameItemButton_OnClick(button, ignShift)
 	if ( IsShiftKeyDown() ) then
 		if ( WIM_EditBoxInFocus ) then
 			local bag, slot = AllInOneInventory_GetIdAsBagSlot(this:GetID());
-			WIM_EditBoxInFocus:Insert(GetContainerItemLink(bag, slot));
+			local link = GetContainerItemLink(bag, slot)
+			if link then WIM_EditBoxInFocus:Insert(link) end
 		end
 	end
 	WIM_AllInOneInventoryFrameItemButton_OnClick_orig(button, ignShift);
@@ -112,7 +114,8 @@ end
 function WIM_LootFrameItem_OnClick(arg1)
 	if ( IsShiftKeyDown() ) then
 		if ( WIM_EditBoxInFocus ) then
-			WIM_EditBoxInFocus:Insert(GetLootSlotLink(this.slot));
+			local link = GetLootSlotLink(this.slot)
+			if link then WIM_EditBoxInFocus:Insert(link) end
 		end
 	end
 	WIM_LootFrameItem_OnClick_orig(arg1);
@@ -195,7 +198,8 @@ end
 function WIM_PaperDollItemSlotButton_OnClick(arg1)
 	if(arg1 == "LeftButton" and IsShiftKeyDown()) then
 		if(WIM_EditBoxInFocus) then
-			WIM_EditBoxInFocus:Insert(GetInventoryItemLink("player", this:GetID()));
+			local link = GetInventoryItemLink("player", this:GetID())
+			if link then WIM_EditBoxInFocus:Insert(link) end
 		end
 	end
 	WIM_PaperDollItemSlotButton_OnClick_orig(arg1);
