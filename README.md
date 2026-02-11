@@ -55,7 +55,7 @@ Check your Key Bindings screen (Escape > Key Bindings) for WIM's available actio
 ## Acknowledgments
 
 ### Original Author
-- **[Pazza](https://www.curseforge.com/members/realpazza/projects)** (Bronzebeard) - Original WIM creator
+- **[Pazza](https://github.com/Pazza)** (Bronzebeard) - Original WIM creator
 
 ### Concept
 - **Sloans** (Bronzebeard) - Original concept and ideas
@@ -64,7 +64,7 @@ Check your Key Bindings screen (Escape > Key Bindings) for WIM's available actio
 - **[shirsig](https://github.com/shirsig)** - Major refactoring, WHO system improvements, /r hotkey fix, whisper autocompletion
 - **[KasVital](https://github.com/KasVital)** - Vanilla compatibility fixes, Cyrillic character support
 - **[me0wg4ming](https://github.com/me0wg4ming)** - Async WHO loading, GM detection, Turtle WoW optimizations
-- **[Refaim](https://github.com/refaim)** - Current maintainer, localization system, code cleanup
+- **[Refaim](https://github.com/refaim)** - Current maintainer, bug fixes, localization system, code cleanup
 - **[DBFBlackbull](https://github.com/DBFBlackbull)** - Dynamic class colors
 - **[Kirchlive](https://github.com/Kirchlive)** - Macro whispers fix
 - **Claude** (Anthropic) - AI-assisted development and localization
@@ -72,9 +72,4 @@ Check your Key Bindings screen (Escape > Key Bindings) for WIM's available actio
 ### Special Thanks
 - Nachonut (Bronzebeard)
 - Everyone in **Resurgence** (Bronzebeard)
-- The communities at ui.WorldOfWar.net and Curse-Gaming.com
-
-## Links
-
-- [GitHub Repository](https://github.com/refaim/WIM)
-- [Turtle WoW](https://turtlecraft.gg)
+- The communities at ui.worldofwar.net and curse-gaming.com
