@@ -10,14 +10,11 @@
 		<Scripts> 
 			<OnLoad> 
 				this:RegisterEvent("VARIABLES_LOADED");
-				this:RegisterEvent("ADDON_LOADED");
 				this:RegisterEvent("CHAT_MSG_AFK");
 				this:RegisterEvent("CHAT_MSG_DND");
 				this:RegisterEvent("CHAT_MSG_WHISPER");
 				this:RegisterEvent("CHAT_MSG_WHISPER_INFORM");
 				this:RegisterEvent("CHAT_MSG_SYSTEM");
-				this:RegisterEvent("TRADE_SKILL_SHOW");
-				this:RegisterEvent("CRAFT_SHOW");
 				this:RegisterEvent("GUILD_ROSTER_UPDATE");
 				this:RegisterEvent("FRIENDLIST_SHOW");
 				this:RegisterEvent("FRIENDLIST_UPDATE");
@@ -401,7 +398,10 @@
 						WIM_ToggleWindow_Toggle();
 					</OnTabPressed>
 					<OnEditFocusGained>
-						WIM_EditBoxInFocus = this;
+						-- Only claim link focus when vanilla chat is not visible
+						if not WIM_OrigChatEditBoxIsVisible or not WIM_OrigChatEditBoxIsVisible(ChatFrameEditBox) then
+							WIM_EditBoxInFocus = this;
+						end
 					</OnEditFocusGained>
 					<OnEditFocusLost>
 						-- Keep WIM_EditBoxInFocus while the WIM window is visible
@@ -577,8 +577,12 @@
 				if not WIM_Windows[user] then return end
 				WIM_Windows[user].newMSG = false;
 				WIM_Windows[user].is_visible = true;
+				local msgBox = getglobal(this:GetName().."MsgBox")
 				if(WIM_Data.autoFocus == true) then
-					getglobal(this:GetName().."MsgBox"):SetFocus();
+					msgBox:SetFocus();
+				end
+				if WIM_OrigChatEditBoxIsVisible and not WIM_OrigChatEditBoxIsVisible(ChatFrameEditBox) then
+					WIM_EditBoxInFocus = msgBox;
 				end
 				WIM_LoadShortcutFrame();
 				WIM_WindowOnShow();
@@ -591,6 +595,15 @@
 				WIM_Windows[user].newMSG = false;
 				if WIM_EditBoxInFocus == getglobal(this:GetName().."MsgBox") then
 					WIM_EditBoxInFocus = nil;
+					for otherUser, data in WIM_Windows do
+						if data.is_visible then
+							local msgBox = getglobal(data.frame .. "MsgBox")
+							if msgBox then
+								WIM_EditBoxInFocus = msgBox
+								break
+							end
+						end
+					end
 				end
 			</OnHide>
 		</Scripts>

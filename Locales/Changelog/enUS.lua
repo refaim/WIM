@@ -1,4 +1,9 @@
 WIM_CHANGE_LOG = [[
+|rVersion 1.3.10 (02-14-2026)|cffffffff
+[*] - Shift+click linking now works reliably in WIM windows (items, quests, spells, etc.)
+[*] - Links are no longer duplicated when both WIM and the default chat are open
+[*] - Improved compatibility with pfQuest and other addons that use shift+click linking
+
 |rVersion 1.3.9 (02-11-2026)|cffffffff
 [*] - Fixed a crash that could occur on login
 [*] - History popup now shows the correct number of messages

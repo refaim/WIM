@@ -1,6 +1,11 @@
 if GetLocale() ~= "ptBR" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersão 1.3.10 (14/02/2026)|cffffffff
+[*] - Shift+clique agora funciona de forma confiável nas janelas do WIM (itens, missões, feitiços, etc.)
+[*] - Links não são mais duplicados quando WIM e o chat padrão estão abertos ao mesmo tempo
+[*] - Melhor compatibilidade com pfQuest e outros addons que usam shift+clique para linkar
+
 |rVersão 1.3.9 (11/02/2026)|cffffffff
 [*] - Corrigido crash que podia ocorrer ao fazer login
 [*] - Popup de histórico agora mostra a quantidade correta de mensagens

@@ -1,8 +1,4 @@
-WIM_ButtonsHooked = false;
-WIM_TradeSkillIsHooked = false;
-WIM_CraftSkillIsHooked = false;
-WIM_InspectIsHooked = false;
-
+WIM_HooksInstalled = false;
 
 
 function WIM_FriendsFrame_SendMessage()
@@ -65,206 +61,6 @@ function WIM_ChatFrame_ReplyTell(chatFrame)
 	end
 end
 
-function WIM_HookInspect()
-	if(WIM_InspectIsHooked) then
-		return;
-	end
-	
-	if(InspectPaperDollFrame) then
-		WIM_InspectPaperDollItemSlotButton_OnClick_orig = InspectPaperDollItemSlotButton_OnClick;
-		InspectPaperDollItemSlotButton_OnClick = WIM_InspectPaperDollItemSlotButton_OnClick;
-		WIM_InspectIsHooked = true;
-	elseif(SuperInspectFrame) then
-		WIM_SuperInspect_InspectPaperDollItemSlotButton_OnClick_orig = SuperInspect_InspectPaperDollItemSlotButton_OnClick;
-		SuperInspect_InspectPaperDollItemSlotButton_OnClick = WIM_SuperInspect_InspectPaperDollItemSlotButton_OnClick;
-		WIM_InspectIsHooked = true;
-	end
-	
-end
-
-function WIM_AtlasLootItem_OnClick(arg1)
-	if ( IsShiftKeyDown() ) then
-		if ( WIM_EditBoxInFocus ) then
-			local color = strsub(getglobal("AtlasLootItem_"..this:GetID().."_Name"):GetText(), 1, 10);
-			local name = strsub(getglobal("AtlasLootItem_"..this:GetID().."_Name"):GetText(), 11);
-			WIM_EditBoxInFocus:Insert(color.."|Hitem:"..this.itemID..":0:0:0|h["..name.."]|h|r");
-		end
-	end
-	WIM_AtlasLootItem_OnClick_orig(arg1);
-end
-
-function WIM_InspectPaperDollItemSlotButton_OnClick(arg1)
-	if ( IsShiftKeyDown() ) then
-		if ( WIM_EditBoxInFocus ) then
-			local link = GetInventoryItemLink(InspectFrame.unit, this:GetID())
-			if link then WIM_EditBoxInFocus:Insert(link) end
-		end
-	end
-	WIM_InspectPaperDollItemSlotButton_OnClick_orig(arg1);
-end
-
-function WIM_AllInOneInventoryFrameItemButton_OnClick(button, ignShift)
-	if ( IsShiftKeyDown() ) then
-		if ( WIM_EditBoxInFocus ) then
-			local bag, slot = AllInOneInventory_GetIdAsBagSlot(this:GetID());
-			local link = GetContainerItemLink(bag, slot)
-			if link then WIM_EditBoxInFocus:Insert(link) end
-		end
-	end
-	WIM_AllInOneInventoryFrameItemButton_OnClick_orig(button, ignShift);
-end
-
-function WIM_LootFrameItem_OnClick(arg1)
-	if ( IsShiftKeyDown() ) then
-		if ( WIM_EditBoxInFocus ) then
-			local link = GetLootSlotLink(this.slot)
-			if link then WIM_EditBoxInFocus:Insert(link) end
-		end
-	end
-	WIM_LootFrameItem_OnClick_orig(arg1);
-end
-
-function WIM_SuperInspect_InspectPaperDollItemSlotButton_OnClick(button, ignoreModifiers)
-	local itemLink = this.link;
-	if ( IsShiftKeyDown() ) then
-		if ( WIM_EditBoxInFocus ) then
-			local link = "|c"..this.c.."|H"..itemLink.."|h["..GetItemInfo(itemLink).."]|h|r";
-			WIM_EditBoxInFocus:Insert(link);
-		end
-	end
-	WIM_SuperInspect_InspectPaperDollItemSlotButton_OnClick_orig(button, ignoreModifiers);
-end
-
-function WIM_HookTradeSkill()
-	if(WIM_TradeSkillIsHooked == true and WIM_CraftSkillIsHooked == true) then
-		return;
-	end
-	
-	if(WIM_TradeSkillIsHooked == false and TradeSkillFrame ~= nil) then
-		WIM_TradeSkillSkillIcon_OnClick_orig = TradeSkillSkillIcon:GetScript("OnClick");
-		TradeSkillSkillIcon:SetScript("OnClick", function() WIM_TradeSkillSkillIcon_OnClick_orig(); WIM_TradeSkillSkillIcon_OnClick(); end);
-		
-		WIM_TradeSkillReagent_OnClick_orig = getglobal("TradeSkillReagent1"):GetScript("OnClick");
-		for i=1, 8 do
-			local orig = getglobal("TradeSkillReagent"..i):GetScript("OnClick");
-			getglobal("TradeSkillReagent"..i):SetScript("OnClick", function() orig(); WIM_TradeSkillReagent_OnClick(); end);
-		end
-		WIM_TradeSkillIsHooked = true;
-	end
-	
-	if(WIM_CraftSkillIsHooked == false and CraftFrame ~= nil) then
-		WIM_CraftIcon_OnClick_orig = CraftIcon:GetScript("OnClick");
-		CraftIcon:SetScript("OnClick", function() WIM_CraftIcon_OnClick_orig(); WIM_CraftIcon_OnClick(); end);
-		
-		WIM_CraftReagent_OnClick_orig = getglobal("CraftReagent1"):GetScript("OnClick");
-		for i=1, 8 do
-			local orig = getglobal("CraftReagent"..i):GetScript("OnClick");
-			getglobal("CraftReagent"..i):SetScript("OnClick", function() orig(); WIM_CraftReagent_OnClick(); end);
-		end
-		
-		WIM_CraftSkillIsHooked = true;
-	end
-end
-
-function WIM_CraftIcon_OnClick(arg1)
-	if ( IsShiftKeyDown() ) then
-		if ( WIM_EditBoxInFocus ) then
-			WIM_EditBoxInFocus:Insert(GetCraftItemLink(GetCraftSelectionIndex()));
-		end
-	end
-end
-
-function WIM_CraftReagent_OnClick(arg1)
-	if ( IsShiftKeyDown() ) then
-		if ( WIM_EditBoxInFocus ) then
-			WIM_EditBoxInFocus:Insert(GetCraftReagentItemLink(GetCraftSelectionIndex(), this:GetID()));
-		end
-	end
-end
-
-
-function WIM_TradeSkillSkillIcon_OnClick(agr1)
-	if ( IsShiftKeyDown() ) then
-		if ( WIM_EditBoxInFocus ) then
-			WIM_EditBoxInFocus:Insert(GetTradeSkillItemLink(TradeSkillFrame.selectedSkill));
-		end
-	end
-end
-
-function WIM_TradeSkillReagent_OnClick(arg1)
-	if ( IsShiftKeyDown() ) then
-		if ( WIM_EditBoxInFocus ) then
-			WIM_EditBoxInFocus:Insert(GetTradeSkillReagentItemLink(TradeSkillFrame.selectedSkill, this:GetID()));
-		end
-	end
-end
-
-
-function WIM_PaperDollItemSlotButton_OnClick(arg1)
-	if(arg1 == "LeftButton" and IsShiftKeyDown()) then
-		if(WIM_EditBoxInFocus) then
-			local link = GetInventoryItemLink("player", this:GetID())
-			if link then WIM_EditBoxInFocus:Insert(link) end
-		end
-	end
-	WIM_PaperDollItemSlotButton_OnClick_orig(arg1);
-end
-
-function WIM_LootLinkItemButton_OnClick(arg1)
-	if(arg1 == "LeftButton" and IsShiftKeyDown()) then
-		if(WIM_EditBoxInFocus) then
-			WIM_EditBoxInFocus:Insert(WIM_LootLink_GetLink(this:GetText()));
-		end
-	end
-	WIM_LootLinkItemButton_OnClick_orig(arg1);
-end
-
--- copy of Lootlink's local function - modified
-function WIM_LootLink_GetHyperlink(name)
-	local itemLink = ItemLinks[name];
-	if( itemLink and itemLink.i ) then
-		-- Remove instance-specific data that we captured from the link we return
-		local item = string.gsub(itemLink.i, "(%d+):(%d+):(%d+):(%d+)", "%1:0:%3:%4");
-		return "item:"..item;
-	end
-	return nil;
-end
-
--- copy of Lootlink's local function - modified
-function WIM_LootLink_GetLink(name)
-	local itemLink = ItemLinks[name];
-	if( itemLink and itemLink.c and itemLink.i ) then
-		local link = "|c"..itemLink.c.."|H"..WIM_LootLink_GetHyperlink(name).."|h["..name.."]|h|r";
-		return link;
-	end
-	return nil;
-end
-
-
-
-function WIM_EngInventory_ItemButton_OnClick()
-	if(arg1 == "LeftButton" and IsShiftKeyDown()) then
-		if(WIM_EditBoxInFocus) then
-			local bar, position, itm, bagnum, slotnum;
-
-			if (EngInventory_buttons[this:GetName()] ~= nil) then
-                bar = EngInventory_buttons[this:GetName()]["bar"];
-                position = EngInventory_buttons[this:GetName()]["position"];
-
-				bagnum = EngInventory_bar_positions[bar][position]["bagnum"];
-				slotnum = EngInventory_bar_positions[bar][position]["slotnum"];
-
-                itm = EngInventory_item_cache[bagnum][slotnum];
-
-				if(itm) then
-					WIM_EditBoxInFocus:Insert(GetContainerItemLink(itm["bagnum"], itm["slotnum"]));
-				end
-			end
-		end
-	end
-	WIM_EngInventory_ItemButton_OnClick_orig(arg1, arg2);
-end
-
 
 function WIM_FriendsFrame_OnEvent()
     if event == 'WHO_LIST_UPDATE' then
@@ -317,27 +113,6 @@ function WIM_FriendsFrame_OnEvent()
 end
 
 
-function WIM_SetItemRef (link, text, button)
-	if (WIM_isLinkURL(link)) then
-		WIM_DisplayURL(link);
-		return;
-	end
-	if (strsub(link, 1, 6) ~= "player") and ( IsShiftKeyDown() ) and ( not ChatFrameEditBox:IsVisible() ) then
-		local itemName = gsub(text, ".*%[(.*)%].*", "%1");
-		if(WIM_EditBoxInFocus) then
-			WIM_EditBoxInFocus:Insert(text);
-		end
-	end
-end
-
-function WIM_ItemButton_OnClick(button, ignoreModifiers)
-	if ( button == "LeftButton" ) and (not ignoreModifiers) and ( IsShiftKeyDown() ) and ( not ChatFrameEditBox:IsVisible() ) and (GameTooltipTextLeft1:GetText()) then
-		if(WIM_EditBoxInFocus) then
-			WIM_EditBoxInFocus:Insert(GetContainerItemLink(this:GetParent():GetID(), this:GetID()));
-		end
-	end
-end
-
 function WIM_WhoList_Update()
 	if not WIM_WhoScanInProgress then
 		return WIM_WhoList_Update_orig()
@@ -345,8 +120,63 @@ function WIM_WhoList_Update()
 end
 
 function WIM_SetUpHooks()
-	if WIM_ButtonsHooked then
+	if WIM_HooksInstalled then
 		return
+	end
+
+	-- Proxy ChatFrameEditBox so all shift+click handlers (game + addons)
+	-- automatically redirect link insertions to WIM's edit box.
+	-- When WIM_EditBoxInFocus is set:
+	--   IsVisible/IsShown return true -> handlers call Insert instead of default action
+	--   Insert redirects to WIM_EditBoxInFocus
+	-- This eliminates the need to hook every individual shift+click handler.
+	do
+		local origIsVisible = ChatFrameEditBox.IsVisible
+		local origIsShown = ChatFrameEditBox.IsShown
+		local origInsert = ChatFrameEditBox.Insert
+		local origShow = ChatFrameEditBox.Show
+
+		-- Save original for use in WIM.xml OnShow (need real visibility check)
+		WIM_OrigChatEditBoxIsVisible = origIsVisible
+
+		ChatFrameEditBox.IsVisible = function(self)
+			if WIM_EditBoxInFocus then return 1 end
+			return origIsVisible(self)
+		end
+
+		ChatFrameEditBox.IsShown = function(self)
+			if WIM_EditBoxInFocus then return 1 end
+			return origIsShown(self)
+		end
+
+		-- Suppress Show during shift+click linking so addons like pfQuest
+		-- (which call ChatFrameEditBox:Show() before Insert) don't open
+		-- vanilla chat and clear WIM_EditBoxInFocus.
+		ChatFrameEditBox.Show = function(self)
+			if WIM_EditBoxInFocus and IsShiftKeyDown() then
+				return
+			end
+			return origShow(self)
+		end
+
+		-- Insert guard: only allow one Insert per frame to prevent double-insertion
+		-- (e.g. pfQuest inserts a quest link, then game original also inserts quest name)
+		local insertedThisFrame = false
+		ChatFrameEditBox.Insert = function(self, text)
+			if WIM_EditBoxInFocus then
+				if not insertedThisFrame then
+					insertedThisFrame = true
+					WIM_EditBoxInFocus:Insert(text)
+				end
+				return
+			end
+			origInsert(self, text)
+		end
+
+		local guardFrame = CreateFrame("Frame")
+		guardFrame:SetScript("OnUpdate", function()
+			insertedThisFrame = false
+		end)
 	end
 
 	do
@@ -414,9 +244,26 @@ function WIM_SetUpHooks()
 		end
 	end)
 
+	--Restore WIM_EditBoxInFocus when vanilla chat edit box closes
+	local origChatEditBoxOnHide = ChatFrameEditBox:GetScript('OnHide')
+	ChatFrameEditBox:SetScript('OnHide', function()
+		if origChatEditBoxOnHide then
+			origChatEditBoxOnHide()
+		end
+		for user, data in WIM_Windows do
+			if data.is_visible then
+				local msgBox = getglobal(data.frame .. "MsgBox")
+				if msgBox then
+					WIM_EditBoxInFocus = msgBox
+					return
+				end
+			end
+		end
+	end)
+
 	--Hook Friends Frame Send Message Button
 	FriendsFrame_SendMessage = WIM_FriendsFrame_SendMessage;
-	
+
 	--Hook Chat Frame Whisper Parse
 	WIM_ChatEdit_ParseText_orig = ChatEdit_ParseText
 	ChatEdit_ParseText = WIM_ChatEdit_ParseText
@@ -428,121 +275,24 @@ function WIM_SetUpHooks()
 	--Hook WhoList_Update
 	WIM_WhoList_Update_orig = WhoList_Update
 	WhoList_Update = WIM_WhoList_Update
-		
+
 	--Hook FriendsFrame_OnEvent
 	WIM_FriendsFrame_OnEvent_orig = FriendsFrame_OnEvent;
 	FriendsFrame_OnEvent = WIM_FriendsFrame_OnEvent;
-	
+
 	--Hook ChatFrame_OnEvent
 	WIM_ChatFrame_OnEvent_orig = ChatFrame_OnEvent;
 	ChatFrame_OnEvent = function(event) if(WIM_ChatFrameSupressor_OnEvent(event)) then WIM_ChatFrame_OnEvent_orig(event); end; end;
-	
-	--Hook SetItemRef
+
+	--Hook SetItemRef for URL display
 	WIM_SetItemRef_orig = SetItemRef;
-	SetItemRef = function(link, text, button) if(not WIM_isLinkURL(link)) then WIM_SetItemRef_orig(link, text, button); end; WIM_SetItemRef(link, text, button); end;
-
-	--Hook Paper Doll Button
-	WIM_PaperDollItemSlotButton_OnClick_orig = PaperDollItemSlotButton_OnClick;
-	PaperDollItemSlotButton_OnClick = WIM_PaperDollItemSlotButton_OnClick;
-	
-	--Hook Loot Frame 
-	WIM_LootFrameItem_OnClick_orig = LootFrameItem_OnClick;
-	LootFrameItem_OnClick = WIM_LootFrameItem_OnClick;
-	
-	
-	--Hook ContainerFrameItemButton_OnClick
-	WIM_ContainerFrameItemButton_OnClick_orig = ContainerFrameItemButton_OnClick;
-	ContainerFrameItemButton_OnClick = function(button, ignoreModifiers)
-
-			if ( button == "LeftButton" ) and (not ignoreModifiers) and ( IsShiftKeyDown() ) and ( not ChatFrameEditBox:IsVisible() ) and (GameTooltipTextLeft1:GetText()) then
-				if(WIM_EditBoxInFocus) then
-					WIM_EditBoxInFocus:Insert(GetContainerItemLink(this:GetParent():GetID(), this:GetID()));
-					return
-				end
-			end
-
-		WIM_ContainerFrameItemButton_OnClick_orig(button, ignoreModifiers); 
-		-- WIM_ItemButton_OnClick(button, ignoreModifiers);
-
-	end;
-	
-	if (AllInOneInventoryFrameItemButton_OnClick) then
-		WIM_AllInOneInventoryFrameItemButton_OnClick_orig = AllInOneInventoryFrameItemButton_OnClick;
-		AllInOneInventoryFrameItemButton_OnClick = WIM_AllInOneInventoryFrameItemButton_OnClick;
-		WIM_AllInOneIsHooked = true;
-	end
-
-	if (EngInventory_ItemButton_OnClick) then
-		WIM_EngInventory_ItemButton_OnClick_orig = EngInventory_ItemButton_OnClick;
-		EngInventory_ItemButton_OnClick = WIM_EngInventory_ItemButton_OnClick;
-		WIM_EngInventoryIsHooked = true;
-	end
-	
-	if (BrowseButton) then
-		--Hook BrowseButtons
-		for i=1, 8 do
-			local frame = getglobal("BrowseButton"..i.."Item");
-			local oldFunc = frame:GetScript("OnClick");
-			frame:SetScript("OnClick", function() oldFunc(); WIM_ItemButton_OnClick(arg1); end);
+	SetItemRef = function(link, text, button)
+		if WIM_isLinkURL(link) then
+			WIM_DisplayURL(link)
+		else
+			WIM_SetItemRef_orig(link, text, button)
 		end
 	end
-	--Hook Quest Log shift+click for quest name linking
-	WIM_QuestLogTitleButton_OnClick_orig = QuestLogTitleButton_OnClick
-	QuestLogTitleButton_OnClick = function(button)
-		if IsShiftKeyDown() and not this.isHeader and not ChatFrameEditBox:IsVisible() and WIM_EditBoxInFocus then
-			-- Temporarily show ChatFrameEditBox so other addons (e.g. pfQuest) can insert quest links
-			local prevText = ChatFrameEditBox:GetText()
-			local prevFocus = WIM_EditBoxInFocus
-			ChatFrameEditBox:SetText("")
-			ChatFrameEditBox:Show()
-			WIM_QuestLogTitleButton_OnClick_orig(button)
-			local result = ChatFrameEditBox:GetText()
-			ChatFrameEditBox:SetText(prevText)
-			ChatFrameEditBox:Hide()
-			WIM_EditBoxInFocus = prevFocus
-			if result == "" then
-				-- No addon inserted a link, fall back to plain quest name
-				local questIndex = this:GetID() + FauxScrollFrame_GetOffset(QuestLogListScrollFrame)
-				result = gsub(this:GetText(), " *(.*)", "%1")
-				QuestLog_SetSelection(questIndex)
-				QuestLog_Update()
-			end
-			WIM_EditBoxInFocus:Insert(result)
-			return
-		end
-		WIM_QuestLogTitleButton_OnClick_orig(button)
-	end
 
-	--Hook Quest Log reward item shift+click for item linking
-	WIM_QuestLogRewardItem_OnClick_orig = QuestLogRewardItem_OnClick
-	QuestLogRewardItem_OnClick = function()
-		if IsShiftKeyDown() and this.rewardType ~= "spell" and not ChatFrameEditBox:IsVisible() and WIM_EditBoxInFocus then
-			WIM_EditBoxInFocus:Insert(GetQuestLogItemLink(this.type, this:GetID()))
-			return
-		end
-		WIM_QuestLogRewardItem_OnClick_orig()
-	end
-
-	WIM_ButtonsHooked = true;
-end
-
-
-function WIM_AddonDetectToHook(theAddon)
-	if(theAddon == "SuperInspect_UI") then
-		WIM_HookInspect();
-	elseif(theAddon == "AtlasLoot") then
-		WIM_AtlasLootItem_OnClick_orig = AtlasLootItem_OnClick;
-		AtlasLootItem_OnClick = WIM_AtlasLootItem_OnClick;
-	elseif(theAddon == "AllInOneInventory" and not WIM_AllInOneIsHooked) then
-		WIM_AllInOneInventoryFrameItemButton_OnClick_orig = AllInOneInventoryFrameItemButton_OnClick;
-		AllInOneInventoryFrameItemButton_OnClick = WIM_AllInOneInventoryFrameItemButton_OnClick;
-		WIM_AllInOneIsHooked = true;
-	elseif(theAddon == "EngInventory" and not WIM_EngInventoryIsHooked) then
-		WIM_EngInventory_ItemButton_OnClick_orig = EngInventory_ItemButton_OnClick;
-		EngInventory_ItemButton_OnClick = WIM_EngInventory_ItemButton_OnClick;
-		WIM_EngInventoryIsHooked = true;
-	elseif(theAddon == "LootLink") then
-		WIM_LootLinkItemButton_OnClick_orig = LootLinkItemButton_OnClick;
-		LootLinkItemButton_OnClick = WIM_LootLinkItemButton_OnClick;
-	end
+	WIM_HooksInstalled = true;
 end

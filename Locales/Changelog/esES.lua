@@ -1,6 +1,11 @@
 if GetLocale() ~= "esES" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersión 1.3.10 (14/02/2026)|cffffffff
+[*] - Shift+clic ahora enlaza de forma fiable en las ventanas de WIM (objetos, misiones, hechizos, etc.)
+[*] - Los enlaces ya no se duplican cuando WIM y el chat predeterminado están abiertos simultáneamente
+[*] - Mejorada la compatibilidad con pfQuest y otros addons que usan shift+clic para enlazar
+
 |rVersión 1.3.9 (11/02/2026)|cffffffff
 [*] - Corregido error que podía ocurrir al iniciar sesión
 [*] - El popup de historial ahora muestra la cantidad correcta de mensajes

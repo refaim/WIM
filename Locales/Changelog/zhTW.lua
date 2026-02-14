@@ -1,6 +1,11 @@
 if GetLocale() ~= "zhTW" then return end
 
 WIM_CHANGE_LOG = [[
+|r版本 1.3.10 (2026年02月14日)|cffffffff
+[*] - Shift+點擊現在可以可靠地在WIM視窗中插入連結（物品、任務、法術等）
+[*] - 當WIM和預設聊天框同時開啟時，連結不再重複插入
+[*] - 改善了與pfQuest及其他使用Shift+點擊連結的插件的相容性
+
 |r版本 1.3.9 (2026年02月11日)|cffffffff
 [*] - 修復登入時可能發生的崩潰
 [*] - 歷史彈窗現在顯示正確的訊息數量

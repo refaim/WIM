@@ -1,6 +1,11 @@
 if GetLocale() ~= "deDE" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersion 1.3.10 (14.02.2026)|cffffffff
+[*] - Shift+Klick verlinkt jetzt zuverlässig in WIM-Fenstern (Gegenstände, Quests, Zauber usw.)
+[*] - Links werden nicht mehr doppelt eingefügt, wenn sowohl WIM als auch der Standard-Chat geöffnet sind
+[*] - Verbesserte Kompatibilität mit pfQuest und anderen Addons, die Shift+Klick-Verlinkung verwenden
+
 |rVersion 1.3.9 (11.02.2026)|cffffffff
 [*] - Absturz beim Einloggen behoben
 [*] - Verlaufs-Popup zeigt jetzt die korrekte Anzahl an Nachrichten

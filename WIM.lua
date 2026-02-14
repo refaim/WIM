@@ -1,4 +1,4 @@
-WIM_VERSION = "1.3.9";
+WIM_VERSION = "1.3.10";
 
 WIM_Windows = {};
 WIM_EditBoxInFocus = nil;
@@ -298,16 +298,11 @@ function WIM_Incoming(event)
 			WIM_Icon_UpdatePosition();
 		end
 		
-	elseif(event == "TRADE_SKILL_SHOW" or event == "CRAFT_SHOW") then
-		--[hook tradeskill window functions
-		WIM_HookTradeSkill();
 	elseif(event == "GUILD_ROSTER_UPDATE") then
 		WIM_LoadGuildList();
 		WIM_AlreadyCheckedGuildRoster = true;
 	elseif(event == "FRIENDLIST_SHOW" or event == "FRIENDLIST_UPDATE") then
 		WIM_LoadFriendList();
-	elseif(event == "ADDON_LOADED") then
-		WIM_AddonDetectToHook(arg1);
 	else
 		if(WIM_AlreadyCheckedGuildRoster == false) then
 			if(IsInGuild()) then GuildRoster(); end; --[update guild roster
