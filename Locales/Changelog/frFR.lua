@@ -5,6 +5,10 @@ WIM_CHANGE_LOG = [[
 [*] - Le shift+clic fonctionne maintenant de manière fiable dans les fenêtres WIM (objets, quêtes, sorts, etc.)
 [*] - Les liens ne sont plus dupliqués lorsque WIM et le chat par défaut sont ouverts en même temps
 [*] - Compatibilité améliorée avec pfQuest et d'autres addons utilisant le shift+clic pour lier
+[*] - /wim reset réinitialise maintenant correctement tous les paramètres
+[*] - L'option « Intercepter les commandes de chuchotement » fonctionne maintenant correctement
+[*] - Les informations du joueur (niveau, classe, guilde) ne restent plus bloquées sur certains joueurs
+[*] - Amélioration des performances de l'addon
 
 |rVersion 1.3.9 (11/02/2026)|cffffffff
 [*] - Correction d'un crash pouvant survenir à la connexion

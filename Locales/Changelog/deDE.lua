@@ -5,6 +5,10 @@ WIM_CHANGE_LOG = [[
 [*] - Shift+Klick verlinkt jetzt zuverlässig in WIM-Fenstern (Gegenstände, Quests, Zauber usw.)
 [*] - Links werden nicht mehr doppelt eingefügt, wenn sowohl WIM als auch der Standard-Chat geöffnet sind
 [*] - Verbesserte Kompatibilität mit pfQuest und anderen Addons, die Shift+Klick-Verlinkung verwenden
+[*] - /wim reset setzt jetzt alle Einstellungen korrekt zurück
+[*] - Die Option „Flüster-Befehle abfangen" funktioniert jetzt korrekt
+[*] - Spielerinformationen (Stufe, Klasse, Gilde) werden bei bestimmten Spielern nicht mehr hängen bleiben
+[*] - Verbesserte Addon-Leistung
 
 |rVersion 1.3.9 (11.02.2026)|cffffffff
 [*] - Absturz beim Einloggen behoben

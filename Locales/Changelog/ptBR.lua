@@ -5,6 +5,10 @@ WIM_CHANGE_LOG = [[
 [*] - Shift+clique agora funciona de forma confiável nas janelas do WIM (itens, missões, feitiços, etc.)
 [*] - Links não são mais duplicados quando WIM e o chat padrão estão abertos ao mesmo tempo
 [*] - Melhor compatibilidade com pfQuest e outros addons que usam shift+clique para linkar
+[*] - /wim reset agora redefine corretamente todas as configurações
+[*] - A opção "Interceptar comandos de sussurro" agora funciona corretamente
+[*] - Informações do jogador (nível, classe, guilda) não ficam mais travadas em certos jogadores
+[*] - Melhorado o desempenho do addon
 
 |rVersão 1.3.9 (11/02/2026)|cffffffff
 [*] - Corrigido crash que podia ocorrer ao fazer login
