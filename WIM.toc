@@ -16,9 +16,13 @@
 ## DefaultState: Enabled
 ## OptionalDeps: Titan
 ## SavedVariables: WIM_Data, WIM_Alias, WIM_Filters, WIM_History
-WIM.xml
-WIM_UrlCopy.xml
-WIM_Icon.xml
-WIM_Options.xml
-WIM_History.xml
-WIM_Titan.xml
+
+Source\Boot.lua
+Source\Application\PlayerService.lua
+
+Source\Legacy\WIM.xml
+Source\Legacy\WIM_UrlCopy.xml
+Source\Legacy\WIM_Icon.xml
+Source\Legacy\WIM_Options.xml
+Source\Legacy\WIM_History.xml
+Source\Legacy\WIM_Titan.xml
