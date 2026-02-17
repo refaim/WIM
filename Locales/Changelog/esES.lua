@@ -1,6 +1,10 @@
 if GetLocale() ~= "esES" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersión 1.3.11 (18/02/2026)|cffffffff
+[*] - La casilla "Mostrar info del personaje" ahora controla correctamente las consultas de jugadores
+[*] - Corregida la congelación del juego causada por la búsqueda de jugadores (/who) atascada
+
 |rVersión 1.3.10 (14/02/2026)|cffffffff
 [*] - Shift+clic ahora enlaza de forma fiable en las ventanas de WIM (objetos, misiones, hechizos, etc.)
 [*] - Los enlaces ya no se duplican cuando WIM y el chat predeterminado están abiertos simultáneamente

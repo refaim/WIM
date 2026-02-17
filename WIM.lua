@@ -1,4 +1,4 @@
-WIM_VERSION = "1.3.10";
+WIM_VERSION = "1.3.11";
 
 WIM_Windows = {};
 WIM_EditBoxInFocus = nil;
@@ -327,6 +327,20 @@ function WIM_Update(elapsed)
 	if WIM_Update_Elapsed < 1 then return end
 	WIM_Update_Elapsed = 0
 
+	-- If character info display is disabled, clear queue and reset WHO state
+	if not WIM_Data.characterInfo.show then
+		for name in WIM_PlayerCacheQueue do
+			WIM_PlayerCacheQueue[name] = nil
+		end
+		if WIM_WhoScanInProgress then
+			WIM_WhoScanInProgress = false
+			if not WIM_IsGM then
+				SetWhoToUI(0)
+			end
+		end
+		return
+	end
+
 	-- WHO cooldown: 30s for Turtle WoW, 5s for vanilla. GMs skip cooldown but wait for response
 	if not WIM_IsGM then
 		local WHO_COOLDOWN = TURTLE_WOW_VERSION and 30 or 5
@@ -389,6 +403,12 @@ function WIM_Update(elapsed)
 		SendWho('n-"'..nextPlayer..'"')
 		info.attempts = info.attempts + 1
 		WIM_LastWhoSent = GetTime()
+	else
+		-- Queue exhausted, ensure clean state
+		WIM_WhoScanInProgress = false
+		if not WIM_IsGM then
+			SetWhoToUI(0)
+		end
 	end
 end
 
@@ -403,28 +423,6 @@ function WIM_WhoInfo(name, callback)
 		end
 		tinsert(WIM_PlayerCacheQueue[name].callbacks, callback)
 	end
-end
-
-local function playerCheck(player, k)
-	-- Always show messages immediately - WHO info will load async
-	-- Queue WHO request for player info (class/race/level) if not cached
-	WIM_DebugMsg("|cff00ffff[WIM]|r playerCheck: " .. player)
-	
-	-- Skip WHO check if player is a GM (we already have GM info)
-	if WIM_PlayerCache[player] and WIM_PlayerCache[player].isGM then
-		WIM_DebugMsg("|cff00ffff[WIM]|r Skipping WHO for GM: " .. player)
-		return k()
-	end
-	
-	if not WIM_PlayerCache[player] and not WIM_PlayerCacheQueue[player] then
-		WIM_WhoInfo(player, function(info)
-			-- Info loaded - update window if exists (but not for GMs)
-			if WIM_Windows[player] and not (WIM_PlayerCache[player] and WIM_PlayerCache[player].isGM) then
-				WIM_SetWhoInfo(player)
-			end
-		end)
-	end
-	return k()
 end
 
 function WIM_ChatFrame_OnEvent(event)
@@ -445,8 +443,8 @@ function WIM_ChatFrame_OnEvent(event)
 	elseif event == 'CHAT_MSG_WHISPER' then
 		local content, sender = arg1, arg2
 		local isGMSender = arg6 == "GM" -- arg6 contains chat flags like "GM", "DEV", etc.
-		
-		-- Store GM status BEFORE playerCheck (so it's set when WIM_SetWhoInfo is called)
+
+		-- Store GM status before WIM_PostMessage (so it's set when WIM_SetWhoInfo is called)
 		if isGMSender then
 			WIM_PlayerCache[sender] = WIM_PlayerCache[sender] or {}
 			WIM_PlayerCache[sender].isGM = true
@@ -456,20 +454,17 @@ function WIM_ChatFrame_OnEvent(event)
 				WIM_PlayerCacheQueue[sender] = nil
 			end
 		end
-		
-		playerCheck(sender, function()
-			-- Update window if GM and window exists
-			if isGMSender and WIM_Windows[sender] then
-				WIM_SetWhoInfo(sender)
-			end
-			if WIM_FilterResult(content) ~= 1 and WIM_FilterResult(content) ~= 2 then
-				-- Include <GM> tag in displayed name if sender is GM
-				local displayName = isGMSender and ("<GM>"..WIM_GetAlias(sender, true)) or WIM_GetAlias(sender, true)
-				msg = "[|Hplayer:"..sender.."|h"..displayName.."|h]: "..content
-				WIM_PostMessage(sender, msg, 1, sender, content)
-			end
-			ChatEdit_SetLastTellTarget(ChatFrameEditBox, sender)
-		end)
+
+		-- Update window if GM and window exists
+		if isGMSender and WIM_Windows[sender] then
+			WIM_SetWhoInfo(sender)
+		end
+		if WIM_FilterResult(content) ~= 1 and WIM_FilterResult(content) ~= 2 then
+			local displayName = isGMSender and ("<GM>"..WIM_GetAlias(sender, true)) or WIM_GetAlias(sender, true)
+			msg = "[|Hplayer:"..sender.."|h"..displayName.."|h]: "..content
+			WIM_PostMessage(sender, msg, 1, sender, content)
+		end
+		ChatEdit_SetLastTellTarget(ChatFrameEditBox, sender)
 	elseif event == 'CHAT_MSG_WHISPER_INFORM' then
 		local content, receiver = arg1, arg2
 		local isGMReceiver = arg6 == "GM" -- Check if receiver is GM

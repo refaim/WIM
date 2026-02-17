@@ -1,6 +1,10 @@
 if GetLocale() ~= "frFR" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersion 1.3.11 (18/02/2026)|cffffffff
+[*] - La case « Afficher les infos du personnage » contrôle maintenant correctement les recherches de joueurs
+[*] - Correction des blocages du jeu causés par la recherche de joueurs (/who) restant bloquée
+
 |rVersion 1.3.10 (14/02/2026)|cffffffff
 [*] - Le shift+clic fonctionne maintenant de manière fiable dans les fenêtres WIM (objets, quêtes, sorts, etc.)
 [*] - Les liens ne sont plus dupliqués lorsque WIM et le chat par défaut sont ouverts en même temps

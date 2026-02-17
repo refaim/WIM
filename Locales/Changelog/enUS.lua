@@ -1,4 +1,8 @@
 WIM_CHANGE_LOG = [[
+|rVersion 1.3.11 (02-18-2026)|cffffffff
+[*] - "Show character info" checkbox now properly controls player lookups
+[*] - Fixed game freezing caused by player lookup (/who) getting stuck
+
 |rVersion 1.3.10 (02-14-2026)|cffffffff
 [*] - Shift+click linking now works reliably in WIM windows (items, quests, spells, etc.)
 [*] - Links are no longer duplicated when both WIM and the default chat are open

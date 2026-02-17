@@ -1,6 +1,10 @@
 if GetLocale() ~= "deDE" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersion 1.3.11 (18.02.2026)|cffffffff
+[*] - Das Kontrollkästchen „Charakterinfo anzeigen" steuert jetzt korrekt die Spielerabfragen
+[*] - Spieleinfrierungen durch hängengebliebene Spielersuche (/who) behoben
+
 |rVersion 1.3.10 (14.02.2026)|cffffffff
 [*] - Shift+Klick verlinkt jetzt zuverlässig in WIM-Fenstern (Gegenstände, Quests, Zauber usw.)
 [*] - Links werden nicht mehr doppelt eingefügt, wenn sowohl WIM als auch der Standard-Chat geöffnet sind

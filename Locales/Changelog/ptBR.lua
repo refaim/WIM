@@ -1,6 +1,10 @@
 if GetLocale() ~= "ptBR" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersão 1.3.11 (18/02/2026)|cffffffff
+[*] - A caixa "Mostrar info do personagem" agora controla corretamente as consultas de jogadores
+[*] - Corrigido congelamento do jogo causado pela busca de jogadores (/who) travando
+
 |rVersão 1.3.10 (14/02/2026)|cffffffff
 [*] - Shift+clique agora funciona de forma confiável nas janelas do WIM (itens, missões, feitiços, etc.)
 [*] - Links não são mais duplicados quando WIM e o chat padrão estão abertos ao mesmo tempo
