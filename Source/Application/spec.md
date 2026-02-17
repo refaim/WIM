@@ -8,79 +8,94 @@ Provides player information (class, level, race, guild, GM status) to consumers.
 
 | Method | Description |
 |--------|-------------|
-| `Construct(gameAPI)` | DI — accepts GameAPI |
+| `Construct(whoService, gameAPI)` | DI — accepts WhoService and GameAPI |
 | `GetInfo(name, callback)` | Main method. Callback receives Player. Cached — immediate, otherwise via WHO |
-| `OnWhisperReceived(name, flags)` | Incoming/outgoing whisper signal. Service detects GM from flags internally |
-| `Tick()` | Called once per second. Processes the queue |
-| `OnSearchResults(numResults, getWhoInfoFn)` | WHO_LIST_UPDATE handler. Returns `true` if results were consumed |
-| `Disable()` | Clears queue, resets scan state |
+| `Enable()` | Enables the service. `GetInfo` starts accepting requests |
+| `Disable()` | Disables the service. Clears queue, cancels pending search. `GetInfo` silently ignores requests while disabled |
 
 ## Business Logic
 
 **Cache:** `name -> Player`. Cache hit = immediate callback, no WHO query.
 
-**Queue:** `name -> PlayerQuery`. One player = one entry with multiple callbacks.
+**Queue:** `name -> PlayerQuery`. One player = one entry, one callback.
 
-**WHO cooldown:**
-- Vanilla: 5s
-- Turtle WoW: 30s
-- GM player (current): no cooldown
+**WHO cooldown:** obtained from `WhoService.GetQueryCooldownInSeconds()`.
 
-**Response timeout:**
-- Non-GM (current): 10s, then retry
-- GM (current): 2s, then retry
-
-> **TODO:** Current player GM logic (cooldown/timeout/SetWhoToUI skip) — unclear if needed. Two separate GM concepts in old code: (1) other player is GM (detected from chat flags, skips WHO), (2) current player is GM (detected from spellbook, affects cooldowns and SetWhoToUI). Consider simplifying or removing (2).
+**Response timeout:** 10s, then retry. 2s if `GameAPI.IsCurrentPlayerGM()`.
 
 **Retry:** max 5 attempts per player. Next player picked by round-robin (lowest attempt count first).
 
-**GM detection:** if `flags == "GM"` in `OnWhisperReceived` — GM Player is created, player is removed from queue, pending callbacks fire immediately.
-
-**SetWhoToUI:** enabled before sending WHO (suppresses default UI), disabled when queue is empty. Not called for GM players.
+**GM detection:** detected via `GameAPI.SetWhisperCallback`. If whisper is from GM — GM Player is created, player is removed from queue, pending callbacks fire immediately.
 
 ---
 
 ## Domain: Player
 
-Value object representing a player. Immutable after construction.
+Value object representing a player. Immutable after construction. **Pooled.**
 
-| Field | Type | Description |
-|-------|------|-------------|
-| class | string | Localized class name ("Mage", "Warrior", ...) |
-| level | number | Character level |
-| race | string | Localized race name |
-| guild | string | Guild name (empty string if none) |
-| isGM | boolean | Whether the player is a GM |
-
-Two constructors:
-- `Construct(class, level, race, guild)` — from WHO result, `isGM = false`
-- `ConstructGM()` — GM without WHO data, all fields nil except `isGM = true`
-
-Getters: `GetClass()`, `GetLevel()`, `GetRace()`, `GetGuild()`, `IsGM()`.
+- `Acquire(class, level, race, guild)` — from WHO result, `isGM = false`
+- `AcquireGM()` — GM without WHO data, all fields nil except `isGM = true`
+- `Release()` — clears fields, returns to pool
+- Getters: `GetClass()`, `GetLevel()`, `GetRace()`, `GetGuild()`, `IsGM()`
 
 ---
 
 ## Domain: PlayerQuery
 
-Pending request for player info. Tracks callbacks and retry attempts. MAX_ATTEMPTS = 5 inside.
+Pending request for player info. **Pooled.** MAX_ATTEMPTS = 5 inside.
 
-- `Construct(callback)` — first callback in constructor, attempts = 0
-- `AddCallback(callback)` — additional callback
-- `Attempt()` — increments attempts
-- `IsExpired()` — attempts >= MAX_ATTEMPTS
-- `Resolve(player)` — fires all callbacks with Player, clears them
+- `Acquire(callback)` — takes from pool (or creates), sets callback, attempts = 0
+- `Resolve(player)` — fires callback with Player, returns to pool
+- `Attempt()` — returns `true` if attempt recorded, `false` if max reached (expired)
+
+---
+
+## Infrastructure: PlayerQueryResult
+
+DTO returned by WhoService in query results callback. **Pooled.** Valid only during callback — WhoService releases after callback returns.
+
+- `Acquire(name, class, level, race, guild)` — takes from pool (or creates), sets fields
+- `Release()` — clears fields, returns to pool
+- Getters: `GetName()`, `GetClass()`, `GetLevel()`, `GetRace()`, `GetGuild()`
+
+---
+
+## Infrastructure: WhoService
+
+Manages WHO query lifecycle. Hooks into FriendsFrame and WhoList to intercept results and suppress the WHO UI. In tests, the underlying WoW API functions are mocked.
+
+| Method | Description |
+|--------|-------------|
+| `SetResultsCallback(callback)` | Registers listener for WHO results. `callback(results, count)` — reused list of `PlayerQueryResult`, valid only during callback. One listener at a time |
+| `QueryPlayer(name)` | `SetWhoToUI(1)` + `SendWho('n-"name"')`. Skips `SetWhoToUI` if current player is GM |
+| `CancelPlayerQuery()` | `SetWhoToUI(0)`. Call when queue is empty |
+| `GetQueryCooldownInSeconds()` | 0 if current player is GM, 30 if Turtle WoW, 5 otherwise |
+
+Internal state:
+- Hooks `FriendsFrame_OnEvent` — intercepts `WHO_LIST_UPDATE`, extracts results via `GetWhoInfo`, suppresses original handler
+- Hooks `WhoList_Update` — suppresses WHO frame list update during scan
+- Manages "scan in progress" flag
 
 ---
 
 ## Infrastructure: GameAPI
 
-Thin abstraction over WoW API used by PlayerService. Replaced with a mock in tests.
-
-> **TODO:** Revisit method names and set. `SearchPlayer`/`EndPlayerSearch` still leak WHO semantics. As current-player-GM logic gets clarified, the API may change (e.g. SearchPlayer might always handle SetWhoToUI internally, or the method split may look different).
+Stateless helpers over WoW API. Replaced with a mock in tests.
 
 | Method | WoW API |
 |--------|---------|
-| `SearchPlayer(name)` | `SetWhoToUI(1)` + `SendWho('n-"name"')` |
-| `EndPlayerSearch()` | `SetWhoToUI(0)` |
+| `IsCurrentPlayerGM()` | Checks spellbook for GM abilities |
 | `GetTime()` | `GetTime()` |
-| `IsTurtleWoW()` | `TURTLE_WOW_VERSION ~= nil` |
+| `SetWhisperCallback(callback)` | Registers listener for whisper events. `callback(name, isGM)`. Parses chat flags internally |
+| `SetTickCallback(callback, interval)` | Calls `callback()` every `interval` seconds. Uses frame `OnUpdate` internally |
+
+---
+
+## TODO
+
+- Cache TTL — evict stale entries after N minutes
+- Suppress WHO system messages in chat (e.g. "1 player total")
+- Prioritize user-initiated WHO requests (move to front of queue)
+- Use friends list data as partial cache (class + level without WHO via `GetFriendInfo`)
+- Use guild roster data as cache (`GetGuildRosterInfo` — gives name, rank, level, class, zone, etc.)
+- Extract player data from unit tooltip when available (`UnitRace`, `GetGuildInfo`, `UnitClass`)
