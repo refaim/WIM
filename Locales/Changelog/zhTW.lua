@@ -1,6 +1,9 @@
 if GetLocale() ~= "zhTW" then return end
 
 WIM_CHANGE_LOG = [[
+|r版本 1.3.12 (2026年02月19日)|cffffffff
+[*] - 嘗試修復WIM視窗開啟時快捷鍵無法使用的問題
+
 |r版本 1.3.11 (2026年02月18日)|cffffffff
 [*] - 「顯示角色資訊」核取方塊現在可以正確控制玩家查詢
 [*] - 修復了玩家查詢（/who）卡住導致遊戲凍結的問題

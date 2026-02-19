@@ -1,6 +1,9 @@
 if GetLocale() ~= "esES" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersión 1.3.12 (19/02/2026)|cffffffff
+[*] - Intento de corregir las teclas de acceso rápido que no funcionaban con una ventana WIM abierta
+
 |rVersión 1.3.11 (18/02/2026)|cffffffff
 [*] - La casilla "Mostrar info del personaje" ahora controla correctamente las consultas de jugadores
 [*] - Corregida la congelación del juego causada por la búsqueda de jugadores (/who) atascada

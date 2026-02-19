@@ -1,6 +1,9 @@
 if GetLocale() ~= "enGB" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersion 1.3.12 (19/02/2026)|cffffffff
+[*] - Attempted to fix keybindings not working while a WIM window is open
+
 |rVersion 1.3.11 (18/02/2026)|cffffffff
 [*] - "Show character info" checkbox now properly controls player lookups
 [*] - Fixed game freezing caused by player lookup (/who) getting stuck

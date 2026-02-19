@@ -1,6 +1,9 @@
 if GetLocale() ~= "frFR" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersion 1.3.12 (19/02/2026)|cffffffff
+[*] - Tentative de correction des raccourcis clavier qui ne fonctionnaient pas avec une fenêtre WIM ouverte
+
 |rVersion 1.3.11 (18/02/2026)|cffffffff
 [*] - La case « Afficher les infos du personnage » contrôle maintenant correctement les recherches de joueurs
 [*] - Correction des blocages du jeu causés par la recherche de joueurs (/who) restant bloquée

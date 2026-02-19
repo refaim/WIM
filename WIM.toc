@@ -2,7 +2,7 @@
 ## Title: WIM
 ## Author: Pazza (Bronzebeard)
 ## X-Maintainer: Refaim
-## Version: 1.3.11
+## Version: 1.3.12
 ## Notes: Give whispers an instant messenger feel.
 ## Notes-deDE: Verleiht Flüstern ein Instant-Messenger-Gefühl.
 ## Notes-enUS: Give whispers an instant messenger feel.

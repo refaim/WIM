@@ -1,4 +1,4 @@
-WIM_VERSION = "1.3.11";
+WIM_VERSION = "1.3.12";
 
 WIM_Windows = {};
 WIM_EditBoxInFocus = nil;
@@ -329,9 +329,7 @@ function WIM_Update(elapsed)
 
 	-- If character info display is disabled, clear queue and reset WHO state
 	if not WIM_Data.characterInfo.show then
-		for name in WIM_PlayerCacheQueue do
-			WIM_PlayerCacheQueue[name] = nil
-		end
+		WIM_PlayerCacheQueue = {}
 		if WIM_WhoScanInProgress then
 			WIM_WhoScanInProgress = false
 			if not WIM_IsGM then

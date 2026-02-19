@@ -140,12 +140,12 @@ function WIM_SetUpHooks()
 		WIM_OrigChatEditBoxIsVisible = origIsVisible
 
 		ChatFrameEditBox.IsVisible = function(self)
-			if WIM_EditBoxInFocus then return 1 end
+			if WIM_EditBoxInFocus and IsShiftKeyDown() then return 1 end
 			return origIsVisible(self)
 		end
 
 		ChatFrameEditBox.IsShown = function(self)
-			if WIM_EditBoxInFocus then return 1 end
+			if WIM_EditBoxInFocus and IsShiftKeyDown() then return 1 end
 			return origIsShown(self)
 		end
 

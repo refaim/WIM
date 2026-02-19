@@ -1,6 +1,9 @@
 if GetLocale() ~= "deDE" then return end
 
 WIM_CHANGE_LOG = [[
+|rVersion 1.3.12 (19.02.2026)|cffffffff
+[*] - Versuch, das Problem mit Tastenbelegungen bei geöffnetem WIM-Fenster zu beheben
+
 |rVersion 1.3.11 (18.02.2026)|cffffffff
 [*] - Das Kontrollkästchen „Charakterinfo anzeigen" steuert jetzt korrekt die Spielerabfragen
 [*] - Spieleinfrierungen durch hängengebliebene Spielersuche (/who) behoben
