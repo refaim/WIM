@@ -404,11 +404,7 @@
 						end
 					</OnEditFocusGained>
 					<OnEditFocusLost>
-						-- Keep WIM_EditBoxInFocus while the WIM window is visible
-						-- so that shift+click linking works even after clicking other UI
-						if not this:GetParent():IsVisible() then
-							WIM_EditBoxInFocus = nil;
-						end
+						WIM_EditBoxInFocus = nil;
 					</OnEditFocusLost>
 				</Scripts>
 			</EditBox>
